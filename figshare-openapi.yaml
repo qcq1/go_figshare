@@ -4549,7 +4549,7 @@ definitions:
     type: object
     x-model: User
     x-tag: other
-host: api.figinternal.dev
+host: api.figshare.com
 info:
   description: Figshare apiv2. Using Swagger 2.0
   title: Figshare API
