@@ -24,9 +24,9 @@ type Timeline struct {
 	// Posted date
 	Posted NullableString `json:"posted"`
 	// Submission date in curation (if curated)
-	Submission NullableString `json:"submission"`
+	Submission NullableString `json:"submission,omitempty"`
 	// Revision date from curation (if curated)
-	Revision NullableString `json:"revision"`
+	Revision NullableString `json:"revision,omitempty"`
 	// Online posted date
 	FirstOnline *string `json:"firstOnline,omitempty"`
 	// Publish date
@@ -41,7 +41,7 @@ type _Timeline Timeline
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewTimeline(posted NullableString, submission NullableString, revision NullableString) *Timeline {
+func NewTimeline(posted NullableString) *Timeline {
 	this := Timeline{}
 	return &this
 }
@@ -80,18 +80,16 @@ func (o *Timeline) SetPosted(v string) {
 	o.Posted.Set(&v)
 }
 
-// GetSubmission returns the Submission field value
-// If the value is explicit nil, the zero value for string will be returned
+// GetSubmission returns the Submission field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Timeline) GetSubmission() string {
-	if o == nil || o.Submission.Get() == nil {
+	if o == nil || IsNil(o.Submission.Get()) {
 		var ret string
 		return ret
 	}
-
 	return *o.Submission.Get()
 }
 
-// GetSubmissionOk returns a tuple with the Submission field value
+// GetSubmissionOk returns a tuple with the Submission field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Timeline) GetSubmissionOk() (*string, bool) {
@@ -101,23 +99,39 @@ func (o *Timeline) GetSubmissionOk() (*string, bool) {
 	return o.Submission.Get(), o.Submission.IsSet()
 }
 
-// SetSubmission sets field value
+// HasSubmission returns a boolean if a field has been set.
+func (o *Timeline) HasSubmission() bool {
+	if o != nil && o.Submission.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetSubmission gets a reference to the given NullableString and assigns it to the Submission field.
 func (o *Timeline) SetSubmission(v string) {
 	o.Submission.Set(&v)
 }
+// SetSubmissionNil sets the value for Submission to be an explicit nil
+func (o *Timeline) SetSubmissionNil() {
+	o.Submission.Set(nil)
+}
 
-// GetRevision returns the Revision field value
-// If the value is explicit nil, the zero value for string will be returned
+// UnsetSubmission ensures that no value is present for Submission, not even an explicit nil
+func (o *Timeline) UnsetSubmission() {
+	o.Submission.Unset()
+}
+
+// GetRevision returns the Revision field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Timeline) GetRevision() string {
-	if o == nil || o.Revision.Get() == nil {
+	if o == nil || IsNil(o.Revision.Get()) {
 		var ret string
 		return ret
 	}
-
 	return *o.Revision.Get()
 }
 
-// GetRevisionOk returns a tuple with the Revision field value
+// GetRevisionOk returns a tuple with the Revision field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Timeline) GetRevisionOk() (*string, bool) {
@@ -127,9 +141,27 @@ func (o *Timeline) GetRevisionOk() (*string, bool) {
 	return o.Revision.Get(), o.Revision.IsSet()
 }
 
-// SetRevision sets field value
+// HasRevision returns a boolean if a field has been set.
+func (o *Timeline) HasRevision() bool {
+	if o != nil && o.Revision.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetRevision gets a reference to the given NullableString and assigns it to the Revision field.
 func (o *Timeline) SetRevision(v string) {
 	o.Revision.Set(&v)
+}
+// SetRevisionNil sets the value for Revision to be an explicit nil
+func (o *Timeline) SetRevisionNil() {
+	o.Revision.Set(nil)
+}
+
+// UnsetRevision ensures that no value is present for Revision, not even an explicit nil
+func (o *Timeline) UnsetRevision() {
+	o.Revision.Unset()
 }
 
 // GetFirstOnline returns the FirstOnline field value if set, zero value otherwise.
@@ -239,8 +271,12 @@ func (o Timeline) MarshalJSON() ([]byte, error) {
 func (o Timeline) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["posted"] = o.Posted.Get()
-	toSerialize["submission"] = o.Submission.Get()
-	toSerialize["revision"] = o.Revision.Get()
+	if o.Submission.IsSet() {
+		toSerialize["submission"] = o.Submission.Get()
+	}
+	if o.Revision.IsSet() {
+		toSerialize["revision"] = o.Revision.Get()
+	}
 	if !IsNil(o.FirstOnline) {
 		toSerialize["firstOnline"] = o.FirstOnline
 	}
@@ -259,8 +295,6 @@ func (o *Timeline) UnmarshalJSON(data []byte) (err error) {
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
 		"posted",
-		"submission",
-		"revision",
 	}
 
 	allProperties := make(map[string]interface{})

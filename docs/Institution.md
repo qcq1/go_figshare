@@ -6,13 +6,13 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | **int64** | Institution id | 
 **Name** | **string** | Institution name | 
-**Domain** | **string** | Institution domain | 
+**Domain** | **NullableString** | Institution domain | 
 
 ## Methods
 
 ### NewInstitution
 
-`func NewInstitution(id int64, name string, domain string, ) *Institution`
+`func NewInstitution(id int64, name string, domain NullableString, ) *Institution`
 
 NewInstitution instantiates a new Institution object
 This constructor will assign default values to properties that have it defined,
@@ -87,6 +87,16 @@ and a boolean to check if the value has been set.
 SetDomain sets Domain field to given value.
 
 
+### SetDomainNil
+
+`func (o *Institution) SetDomainNil(b bool)`
+
+ SetDomainNil sets the value for Domain to be an explicit nil
+
+### UnsetDomain
+`func (o *Institution) UnsetDomain()`
+
+UnsetDomain ensures that no value is present for Domain, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

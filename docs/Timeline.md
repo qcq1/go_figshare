@@ -5,8 +5,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Posted** | **NullableString** | Posted date | 
-**Submission** | **NullableString** | Submission date in curation (if curated) | 
-**Revision** | **NullableString** | Revision date from curation (if curated) | 
+**Submission** | Pointer to **NullableString** | Submission date in curation (if curated) | [optional] 
+**Revision** | Pointer to **NullableString** | Revision date from curation (if curated) | [optional] 
 **FirstOnline** | Pointer to **string** | Online posted date | [optional] 
 **PublisherPublication** | Pointer to **string** | Publish date | [optional] 
 **PublisherAcceptance** | Pointer to **string** | Date when the item was accepted for publication | [optional] 
@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 
 ### NewTimeline
 
-`func NewTimeline(posted NullableString, submission NullableString, revision NullableString, ) *Timeline`
+`func NewTimeline(posted NullableString, ) *Timeline`
 
 NewTimeline instantiates a new Timeline object
 This constructor will assign default values to properties that have it defined,
@@ -79,6 +79,11 @@ and a boolean to check if the value has been set.
 
 SetSubmission sets Submission field to given value.
 
+### HasSubmission
+
+`func (o *Timeline) HasSubmission() bool`
+
+HasSubmission returns a boolean if a field has been set.
 
 ### SetSubmissionNil
 
@@ -109,6 +114,11 @@ and a boolean to check if the value has been set.
 
 SetRevision sets Revision field to given value.
 
+### HasRevision
+
+`func (o *Timeline) HasRevision() bool`
+
+HasRevision returns a boolean if a field has been set.
 
 ### SetRevisionNil
 

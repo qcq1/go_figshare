@@ -8853,6 +8853,7 @@
         "domain": {
           "description": "Institution domain",
           "type": "string",
+          "x-nullable": true,
           "example": null
         }
       }
@@ -11084,8 +11085,6 @@
       ],
       "required": [
         "posted",
-        "submission",
-        "revision",
         "firstOnline",
         "publisherPublication",
         "publisherAcceptance"

@@ -7687,6 +7687,7 @@ components:
         domain:
           description: Institution domain
           example: "null"
+          nullable: true
           type: string
       required:
       - domain
@@ -9976,8 +9977,6 @@ components:
           type: string
       required:
       - posted
-      - revision
-      - submission
       x-tag: timeline
     ProjectArticle:
       allOf:

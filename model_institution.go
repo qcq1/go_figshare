@@ -26,7 +26,7 @@ type Institution struct {
 	// Institution name
 	Name string `json:"name"`
 	// Institution domain
-	Domain string `json:"domain"`
+	Domain NullableString `json:"domain"`
 }
 
 type _Institution Institution
@@ -35,7 +35,7 @@ type _Institution Institution
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewInstitution(id int64, name string, domain string) *Institution {
+func NewInstitution(id int64, name string, domain NullableString) *Institution {
 	this := Institution{}
 	this.Id = id
 	this.Name = name
@@ -100,27 +100,29 @@ func (o *Institution) SetName(v string) {
 }
 
 // GetDomain returns the Domain field value
+// If the value is explicit nil, the zero value for string will be returned
 func (o *Institution) GetDomain() string {
-	if o == nil {
+	if o == nil || o.Domain.Get() == nil {
 		var ret string
 		return ret
 	}
 
-	return o.Domain
+	return *o.Domain.Get()
 }
 
 // GetDomainOk returns a tuple with the Domain field value
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Institution) GetDomainOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.Domain, true
+	return o.Domain.Get(), o.Domain.IsSet()
 }
 
 // SetDomain sets field value
 func (o *Institution) SetDomain(v string) {
-	o.Domain = v
+	o.Domain.Set(&v)
 }
 
 func (o Institution) MarshalJSON() ([]byte, error) {
@@ -135,7 +137,7 @@ func (o Institution) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["id"] = o.Id
 	toSerialize["name"] = o.Name
-	toSerialize["domain"] = o.Domain
+	toSerialize["domain"] = o.Domain.Get()
 	return toSerialize, nil
 }
 
