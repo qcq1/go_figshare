@@ -1,0 +1,11 @@
+# figshare-gen.yaml - oapi-codegen v2 官方标准配置（无解析错误）
+# 核心三字段：package/output/generate（新版仅支持这三个顶层字段）
+package: figshare_client  # 生成代码的包名（必填）
+output: ./pkg/client/figshare/gen_client.go  # 生成文件输出路径（必填）
+generate:
+  # 仅保留新版支持的生成选项（移除所有废弃字段）
+  models: true            # 生成模型结构体（解决重复定义的核心）
+  client: true            # 生成客户端代码
+  embedded-spec: false    # 不嵌入OpenAPI规范（减小体积）
+  strict-server: false    # 仅生成客户端，不生成服务端
+  # 注意：strict-models、model、client 等字段已移除，新版无需配置
