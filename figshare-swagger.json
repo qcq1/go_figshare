@@ -8854,7 +8854,7 @@
           "description": "Institution domain",
           "type": [
             "string",
-            null
+            "null"
           ],
           "example": null
         }
@@ -9186,7 +9186,7 @@
         "published_date": {
           "type": [
             "string",
-            null
+            "null"
           ],
           "description": "Date when project was published",
           "example": "2017-05-16T14:55:08Z"
@@ -9298,7 +9298,7 @@
         "figshare_url": {
           "type": [
             "string",
-            null
+            "null"
           ],
           "description": "Project public url",
           "example": "https://figshare.com/projects/project/1"
@@ -9381,7 +9381,7 @@
         "figshare_url": {
           "type": [
             "string",
-            null
+            "null"
           ],
           "description": "Project public url",
           "example": "https://figshare.com/projects/project/1"
@@ -10031,7 +10031,7 @@
         "review_date": {
           "type": [
             "string",
-            null
+            "null"
           ],
           "description": "The last time a comment has been added to the review."
         },
@@ -10700,7 +10700,7 @@
         "group_resource_id": {
           "type": [
             "string",
-            null
+            "null"
           ],
           "description": "Collection group resource id",
           "example": 1
@@ -10944,7 +10944,7 @@
         "group_id": {
           "type": [
             "number",
-            null
+            "null"
           ],
           "description": "Group ID",
           "example": 1234
@@ -10982,7 +10982,7 @@
         "published_date": {
           "type": [
             "string",
-            null
+            "null"
           ],
           "description": "Posted date",
           "example": "2015-12-31T23:59:59.000Z"
@@ -11028,7 +11028,7 @@
           "description": "Date when article was last modified",
           "type": [
             "string",
-            null
+            "null"
           ],
           "example": "2017-05-18T11:49:03Z"
         }
@@ -11113,7 +11113,7 @@
         "posted": {
           "type": [
             "string",
-            null
+            "null"
           ],
           "description": "Posted date",
           "example": "2015-12-31"
@@ -11121,7 +11121,7 @@
         "submission": {
           "type": [
             "string",
-            null
+            "null"
           ],
           "description": "Submission date in curation (if curated)",
           "example": "2015-12-31"
@@ -11129,7 +11129,7 @@
         "revision": {
           "type": [
             "string",
-            null
+            "null"
           ],
           "description": "Revision date from curation (if curated)",
           "example": "2015-12-31"
@@ -11201,7 +11201,7 @@
           "description": "Article embargo",
           "type": [
             "string",
-            null
+            "null"
           ],
           "example": "article"
         },
@@ -11288,7 +11288,7 @@
           "description": "Date when embargo lifts",
           "type": [
             "string",
-            null
+            "null"
           ],
           "example": "2017-05-18T11:49:03Z"
         },
@@ -11301,7 +11301,7 @@
           "description": "Date when article was last modified",
           "type": [
             "string",
-            null
+            "null"
           ],
           "example": "2017-05-18T11:49:03Z"
         },
@@ -11543,7 +11543,7 @@
         "group_resource_id": {
           "type": [
             "string",
-            null
+            "null"
           ],
           "description": "Group resource id",
           "example": 1
@@ -11746,7 +11746,7 @@
         "group_resource_id": {
           "type": [
             "string",
-            null
+            "null"
           ],
           "description": "Collection group resource id",
           "example": 1
@@ -11954,7 +11954,7 @@
         "embargo_date": {
           "type": [
             "string",
-            null
+            "null"
           ],
           "description": "Date when embargo lifts",
           "example": "2018-05-22T04:04:04"
@@ -11962,7 +11962,7 @@
         "embargo_type": {
           "type": [
             "string",
-            null
+            "null"
           ],
           "description": "Embargo type",
           "example": "article"
@@ -12249,7 +12249,7 @@
         "status": {
           "type": [
             "string",
-            null
+            "null"
           ],
           "description": "Status for file upload",
           "example": "created"
@@ -13017,7 +13017,7 @@
         "published_date": {
           "type": [
             "string",
-            null
+            "null"
           ],
           "description": "Date when collection was published ",
           "example": "2015-08-12T00:39:55"
@@ -13203,7 +13203,7 @@
         "group_resource_id": {
           "type": [
             "string",
-            null
+            "null"
           ],
           "description": "Collection group resource id",
           "example": 1
