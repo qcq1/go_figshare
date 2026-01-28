@@ -277,9 +277,8 @@ definitions:
       group_id:
         description: Group ID
         example: 1234
-        type:
-        - number
-        - 'null'
+        type: number
+        x-nullable: true
       handle:
         description: Handle
         example: 111184/figshare.1234
@@ -292,15 +291,13 @@ definitions:
       modified_date:
         description: Date when article was last modified
         example: '2017-05-18T11:49:03Z'
-        type:
-        - string
-        - 'null'
+        type: string
+        x-nullable: true
       published_date:
         description: Posted date
         example: '2015-12-31T23:59:59.000Z'
-        type:
-        - string
-        - 'null'
+        type: string
+        x-nullable: true
       resource_doi:
         default: ''
         description: Deprecated by related materials. Not applicable to regular users.
@@ -479,9 +476,8 @@ definitions:
       group_resource_id:
         description: Group resource id
         example: 1
-        type:
-        - string
-        - 'null'
+        type: string
+        x-nullable: true
     required:
     - group_resource_id
     - account_id
@@ -741,9 +737,8 @@ definitions:
       embargo_date:
         description: Date when embargo lifts
         example: '2018-05-22T04:04:04'
-        type:
-        - string
-        - 'null'
+        type: string
+        x-nullable: true
       embargo_options:
         description: List of embargo permissions that are associated with the article.
           If the type is logged_in and the group_ids list is empty, then the whole
@@ -774,9 +769,8 @@ definitions:
       embargo_type:
         description: Embargo type
         example: article
-        type:
-        - string
-        - 'null'
+        type: string
+        x-nullable: true
       is_embargoed:
         description: True if embargoed
         example: true
@@ -1557,9 +1551,8 @@ definitions:
       published_date:
         description: 'Date when collection was published '
         example: '2015-08-12T00:39:55'
-        type:
-        - string
-        - 'null'
+        type: string
+        x-nullable: true
       timeline:
         $ref: '#/definitions/Timeline'
         description: Various timeline dates
@@ -1633,9 +1626,8 @@ definitions:
       group_resource_id:
         description: Collection group resource id
         example: 1
-        type:
-        - string
-        - 'null'
+        type: string
+        x-nullable: true
       institution_id:
         description: Collection institution
         example: 1
@@ -1804,9 +1796,8 @@ definitions:
       group_resource_id:
         description: Collection group resource id
         example: 1
-        type:
-        - string
-        - 'null'
+        type: string
+        x-nullable: true
       institution_id:
         description: Collection institution
         example: 1
@@ -2513,9 +2504,8 @@ definitions:
         type: string
       review_date:
         description: The last time a comment has been added to the review.
-        type:
-        - string
-        - 'null'
+        type: string
+        x-nullable: true
       status:
         description: The status of the review.
         enum:
@@ -2856,9 +2846,8 @@ definitions:
       domain:
         description: Institution domain
         example: null
-        type:
-        - string
-        - 'null'
+        type: string
+        x-nullable: true
       id:
         description: Institution id
         example: 0
@@ -3177,9 +3166,8 @@ definitions:
       status:
         description: Status for file upload
         example: created
-        type:
-        - string
-        - 'null'
+        type: string
+        x-nullable: true
       upload_token:
         description: Token for file upload
         example: 9dfc5fe3-d617-4d93-ac11-8afe7e984a4b
@@ -3313,9 +3301,8 @@ definitions:
       group_resource_id:
         description: Collection group resource id
         example: 1
-        type:
-        - string
-        - 'null'
+        type: string
+        x-nullable: true
     required:
     - files
     - embargo_options
@@ -3431,9 +3418,8 @@ definitions:
       published_date:
         description: Date when project was published
         example: '2017-05-16T14:55:08Z'
-        type:
-        - string
-        - 'null'
+        type: string
+        x-nullable: true
       title:
         description: Project title
         example: project
@@ -3481,9 +3467,8 @@ definitions:
       embargo_date:
         description: Date when embargo lifts
         example: '2017-05-18T11:49:03Z'
-        type:
-        - string
-        - 'null'
+        type: string
+        x-nullable: true
       embargo_reason:
         description: Reason for embargo
         example: not complete
@@ -3495,9 +3480,8 @@ definitions:
       embargo_type:
         description: Article embargo
         example: article
-        type:
-        - string
-        - 'null'
+        type: string
+        x-nullable: true
       funding:
         description: Article funding
         example: none
@@ -3547,9 +3531,8 @@ definitions:
       modified_date:
         description: Date when article was last modified
         example: '2017-05-18T11:49:03Z'
-        type:
-        - string
-        - 'null'
+        type: string
+        x-nullable: true
       references:
         description: List of references
         example:
@@ -3718,9 +3701,8 @@ definitions:
       figshare_url:
         description: Project public url
         example: https://figshare.com/projects/project/1
-        type:
-        - string
-        - 'null'
+        type: string
+        x-nullable: true
       funding:
         description: Project funding
         example: ''
@@ -3781,9 +3763,8 @@ definitions:
       figshare_url:
         description: Project public url
         example: https://figshare.com/projects/project/1
-        type:
-        - string
-        - 'null'
+        type: string
+        x-nullable: true
       funding:
         description: Project funding
         example: none
@@ -4390,21 +4371,18 @@ definitions:
       posted:
         description: Posted date
         example: '2015-12-31'
-        type:
-        - string
-        - 'null'
+        type: string
+        x-nullable: true
       revision:
         description: Revision date from curation (if curated)
         example: '2015-12-31'
-        type:
-        - string
-        - 'null'
+        type: string
+        x-nullable: true
       submission:
         description: Submission date in curation (if curated)
         example: '2015-12-31'
-        type:
-        - string
-        - 'null'
+        type: string
+        x-nullable: true
     required:
     - posted
     - submission
