@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Name** | **string** | Custom  metadata name | 
-**Value** | **map[string]interface{}** | Custom metadata value (can be either a string or an array of strings) | 
+**Value** | **string** | Custom metadata value (can be either a string or an array of strings) | 
 **FieldType** | **string** | Custom field type | 
 **Settings** | **map[string]interface{}** | Settings for the custom field | 
 **Order** | **int64** | Order of the custom field | 
@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 
 ### NewCustomArticleField
 
-`func NewCustomArticleField(name string, value map[string]interface{}, fieldType string, settings map[string]interface{}, order int64, isMandatory bool, ) *CustomArticleField`
+`func NewCustomArticleField(name string, value string, fieldType string, settings map[string]interface{}, order int64, isMandatory bool, ) *CustomArticleField`
 
 NewCustomArticleField instantiates a new CustomArticleField object
 This constructor will assign default values to properties that have it defined,
@@ -52,20 +52,20 @@ SetName sets Name field to given value.
 
 ### GetValue
 
-`func (o *CustomArticleField) GetValue() map[string]interface{}`
+`func (o *CustomArticleField) GetValue() string`
 
 GetValue returns the Value field if non-nil, zero value otherwise.
 
 ### GetValueOk
 
-`func (o *CustomArticleField) GetValueOk() (*map[string]interface{}, bool)`
+`func (o *CustomArticleField) GetValueOk() (*string, bool)`
 
 GetValueOk returns a tuple with the Value field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetValue
 
-`func (o *CustomArticleField) SetValue(v map[string]interface{})`
+`func (o *CustomArticleField) SetValue(v string)`
 
 SetValue sets Value field to given value.
 

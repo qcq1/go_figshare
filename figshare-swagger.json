@@ -12084,6 +12084,7 @@
         },
         "value": {
           "description": "Custom metadata value (can be either a string or an array of strings)",
+          "type": "string",
           "example": "value"
         },
         "field_type": {

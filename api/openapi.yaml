@@ -10883,7 +10883,7 @@ components:
           description: Custom metadata value (can be either a string or an array of
             strings)
           example: value
-          type: object
+          type: string
         field_type:
           description: Custom field type
           enum:

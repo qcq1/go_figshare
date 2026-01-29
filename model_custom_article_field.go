@@ -24,7 +24,7 @@ type CustomArticleField struct {
 	// Custom  metadata name
 	Name string `json:"name"`
 	// Custom metadata value (can be either a string or an array of strings)
-	Value map[string]interface{} `json:"value"`
+	Value string `json:"value"`
 	// Custom field type
 	FieldType string `json:"field_type"`
 	// Settings for the custom field
@@ -41,7 +41,7 @@ type _CustomArticleField CustomArticleField
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCustomArticleField(name string, value map[string]interface{}, fieldType string, settings map[string]interface{}, order int64, isMandatory bool) *CustomArticleField {
+func NewCustomArticleField(name string, value string, fieldType string, settings map[string]interface{}, order int64, isMandatory bool) *CustomArticleField {
 	this := CustomArticleField{}
 	this.Name = name
 	this.Value = value
@@ -85,9 +85,9 @@ func (o *CustomArticleField) SetName(v string) {
 }
 
 // GetValue returns the Value field value
-func (o *CustomArticleField) GetValue() map[string]interface{} {
+func (o *CustomArticleField) GetValue() string {
 	if o == nil {
-		var ret map[string]interface{}
+		var ret string
 		return ret
 	}
 
@@ -96,15 +96,15 @@ func (o *CustomArticleField) GetValue() map[string]interface{} {
 
 // GetValueOk returns a tuple with the Value field value
 // and a boolean to check if the value has been set.
-func (o *CustomArticleField) GetValueOk() (map[string]interface{}, bool) {
+func (o *CustomArticleField) GetValueOk() (*string, bool) {
 	if o == nil {
-		return map[string]interface{}{}, false
+		return nil, false
 	}
-	return o.Value, true
+	return &o.Value, true
 }
 
 // SetValue sets field value
-func (o *CustomArticleField) SetValue(v map[string]interface{}) {
+func (o *CustomArticleField) SetValue(v string) {
 	o.Value = v
 }
 
