@@ -40,7 +40,7 @@ func (a *ArticlesAPIService) TotalArticleExecute(r ApiTotalArticleRequest) (*Tot
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/total/articles/{article_id}"
+	localVarPath := localBasePath + "/total/article/{article_id}"
 	localVarPath = strings.Replace(localVarPath, "{"+"article_id"+"}", url.PathEscape(parameterValueToString(r.articleId, "articleId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
