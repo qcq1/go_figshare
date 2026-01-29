@@ -98,6 +98,12 @@ func NewConfiguration() *Configuration {
 			},
 		},
 		OperationServers: map[string]ServerConfigurations{
+			"ArticlesAPIService.TotalArticle": {
+				{
+					URL: "https://stats.figshare.com",
+					Description: "No description provided",
+				},
+			},
 		},
 	}
 	return cfg
