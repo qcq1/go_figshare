@@ -10894,6 +10894,7 @@
         "doi",
         "handle",
         "group_id",
+        "url",
         "url_public_html",
         "url_public_api",
         "url_private_html",
@@ -13713,8 +13714,7 @@
         "title",
         "grant_code",
         "funder_name",
-        "is_user_defined",
-        "url"
+        "is_user_defined"
       ],
       "properties": {
         "id": {

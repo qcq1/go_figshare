@@ -97,7 +97,7 @@ type ArticleComplete struct {
 	// Group ID
 	GroupId NullableFloat32 `json:"group_id"`
 	// Api endpoint for article
-	Url *string `json:"url,omitempty"`
+	Url string `json:"url"`
 	// Public site endpoint for article
 	UrlPublicHtml string `json:"url_public_html"`
 	// Public Api endpoint for article
@@ -127,7 +127,7 @@ type _ArticleComplete ArticleComplete
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewArticleComplete(figshareUrl string, downloadDisabled bool, files []PublicFile, folderStructure map[string]interface{}, authors []Author, customFields []CustomArticleField, embargoOptions []GroupEmbargoOptions, citation string, confidentialReason string, embargoType NullableString, isConfidential bool, size int64, funding string, fundingList []FundingInformation, tags []string, keywords []string, version int64, isMetadataRecord bool, metadataReason string, status string, description string, isEmbargoed bool, embargoDate NullableString, isPublic bool, modifiedDate NullableString, createdDate string, hasLinkedFile bool, categories []Category, license License, embargoTitle string, embargoReason string, references []string, id int64, title string, doi string, handle string, groupId NullableFloat32, urlPublicHtml string, urlPublicApi string, urlPrivateHtml string, urlPrivateApi string, publishedDate NullableString, timeline Timeline, thumb string, definedType int64, definedTypeName string, resourceDoi string, resourceTitle string) *ArticleComplete {
+func NewArticleComplete(figshareUrl string, downloadDisabled bool, files []PublicFile, folderStructure map[string]interface{}, authors []Author, customFields []CustomArticleField, embargoOptions []GroupEmbargoOptions, citation string, confidentialReason string, embargoType NullableString, isConfidential bool, size int64, funding string, fundingList []FundingInformation, tags []string, keywords []string, version int64, isMetadataRecord bool, metadataReason string, status string, description string, isEmbargoed bool, embargoDate NullableString, isPublic bool, modifiedDate NullableString, createdDate string, hasLinkedFile bool, categories []Category, license License, embargoTitle string, embargoReason string, references []string, id int64, title string, doi string, handle string, groupId NullableFloat32, url string, urlPublicHtml string, urlPublicApi string, urlPrivateHtml string, urlPrivateApi string, publishedDate NullableString, timeline Timeline, thumb string, definedType int64, definedTypeName string, resourceDoi string, resourceTitle string) *ArticleComplete {
 	this := ArticleComplete{}
 	this.Citation = citation
 	this.ConfidentialReason = confidentialReason
@@ -159,6 +159,7 @@ func NewArticleComplete(figshareUrl string, downloadDisabled bool, files []Publi
 	this.Doi = doi
 	this.Handle = handle
 	this.GroupId = groupId
+	this.Url = url
 	this.UrlPublicHtml = urlPublicHtml
 	this.UrlPublicApi = urlPublicApi
 	this.UrlPrivateHtml = urlPrivateHtml
@@ -1113,36 +1114,28 @@ func (o *ArticleComplete) SetGroupId(v float32) {
 	o.GroupId.Set(&v)
 }
 
-// GetUrl returns the Url field value if set, zero value otherwise.
+// GetUrl returns the Url field value
 func (o *ArticleComplete) GetUrl() string {
-	if o == nil || IsNil(o.Url) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Url
+
+	return o.Url
 }
 
-// GetUrlOk returns a tuple with the Url field value if set, nil otherwise
+// GetUrlOk returns a tuple with the Url field value
 // and a boolean to check if the value has been set.
 func (o *ArticleComplete) GetUrlOk() (*string, bool) {
-	if o == nil || IsNil(o.Url) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Url, true
+	return &o.Url, true
 }
 
-// HasUrl returns a boolean if a field has been set.
-func (o *ArticleComplete) HasUrl() bool {
-	if o != nil && !IsNil(o.Url) {
-		return true
-	}
-
-	return false
-}
-
-// SetUrl gets a reference to the given string and assigns it to the Url field.
+// SetUrl sets field value
 func (o *ArticleComplete) SetUrl(v string) {
-	o.Url = &v
+	o.Url = v
 }
 
 // GetUrlPublicHtml returns the UrlPublicHtml field value
@@ -1461,9 +1454,7 @@ func (o ArticleComplete) ToMap() (map[string]interface{}, error) {
 	toSerialize["doi"] = o.Doi
 	toSerialize["handle"] = o.Handle
 	toSerialize["group_id"] = o.GroupId.Get()
-	if !IsNil(o.Url) {
-		toSerialize["url"] = o.Url
-	}
+	toSerialize["url"] = o.Url
 	toSerialize["url_public_html"] = o.UrlPublicHtml
 	toSerialize["url_public_api"] = o.UrlPublicApi
 	toSerialize["url_private_html"] = o.UrlPrivateHtml
@@ -1520,6 +1511,7 @@ func (o *ArticleComplete) UnmarshalJSON(data []byte) (err error) {
 		"doi",
 		"handle",
 		"group_id",
+		"url",
 		"url_public_html",
 		"url_public_api",
 		"url_private_html",

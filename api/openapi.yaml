@@ -9910,6 +9910,7 @@ components:
       - thumb
       - timeline
       - title
+      - url
       - url_private_api
       - url_private_html
       - url_public_api
@@ -12556,7 +12557,6 @@ components:
       - id
       - is_user_defined
       - title
-      - url
       type: object
       x-tag: funding
     FundingSearch:

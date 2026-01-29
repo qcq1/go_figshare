@@ -9,13 +9,13 @@ Name | Type | Description | Notes
 **GrantCode** | **string** | The grant code | 
 **FunderName** | **string** | Funder&#39;s name | 
 **IsUserDefined** | **int64** | Return 1 whether the grant has been introduced manually, 0 otherwise | 
-**Url** | **string** | The grant url | 
+**Url** | Pointer to **string** | The grant url | [optional] 
 
 ## Methods
 
 ### NewFundingInformation
 
-`func NewFundingInformation(id int64, title string, grantCode string, funderName string, isUserDefined int64, url string, ) *FundingInformation`
+`func NewFundingInformation(id int64, title string, grantCode string, funderName string, isUserDefined int64, ) *FundingInformation`
 
 NewFundingInformation instantiates a new FundingInformation object
 This constructor will assign default values to properties that have it defined,
@@ -149,6 +149,11 @@ and a boolean to check if the value has been set.
 
 SetUrl sets Url field to given value.
 
+### HasUrl
+
+`func (o *FundingInformation) HasUrl() bool`
+
+HasUrl returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

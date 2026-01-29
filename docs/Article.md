@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **Doi** | **string** | DOI | 
 **Handle** | **string** | Handle | 
 **GroupId** | **NullableFloat32** | Group ID | 
-**Url** | Pointer to **string** | Api endpoint for article | [optional] 
+**Url** | **string** | Api endpoint for article | 
 **UrlPublicHtml** | **string** | Public site endpoint for article | 
 **UrlPublicApi** | **string** | Public Api endpoint for article | 
 **UrlPrivateHtml** | **string** | Private site endpoint for article | 
@@ -28,7 +28,7 @@ Name | Type | Description | Notes
 
 ### NewArticle
 
-`func NewArticle(id int64, title string, doi string, handle string, groupId NullableFloat32, urlPublicHtml string, urlPublicApi string, urlPrivateHtml string, urlPrivateApi string, publishedDate NullableString, timeline Timeline, thumb string, definedType int64, definedTypeName string, resourceDoi string, resourceTitle string, createdDate string, modifiedDate NullableString, ) *Article`
+`func NewArticle(id int64, title string, doi string, handle string, groupId NullableFloat32, url string, urlPublicHtml string, urlPublicApi string, urlPrivateHtml string, urlPrivateApi string, publishedDate NullableString, timeline Timeline, thumb string, definedType int64, definedTypeName string, resourceDoi string, resourceTitle string, createdDate string, modifiedDate NullableString, ) *Article`
 
 NewArticle instantiates a new Article object
 This constructor will assign default values to properties that have it defined,
@@ -172,11 +172,6 @@ and a boolean to check if the value has been set.
 
 SetUrl sets Url field to given value.
 
-### HasUrl
-
-`func (o *Article) HasUrl() bool`
-
-HasUrl returns a boolean if a field has been set.
 
 ### GetUrlPublicHtml
 

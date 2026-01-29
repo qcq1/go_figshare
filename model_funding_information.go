@@ -32,7 +32,7 @@ type FundingInformation struct {
 	// Return 1 whether the grant has been introduced manually, 0 otherwise
 	IsUserDefined int64 `json:"is_user_defined"`
 	// The grant url
-	Url string `json:"url"`
+	Url *string `json:"url,omitempty"`
 }
 
 type _FundingInformation FundingInformation
@@ -41,14 +41,13 @@ type _FundingInformation FundingInformation
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewFundingInformation(id int64, title string, grantCode string, funderName string, isUserDefined int64, url string) *FundingInformation {
+func NewFundingInformation(id int64, title string, grantCode string, funderName string, isUserDefined int64) *FundingInformation {
 	this := FundingInformation{}
 	this.Id = id
 	this.Title = title
 	this.GrantCode = grantCode
 	this.FunderName = funderName
 	this.IsUserDefined = isUserDefined
-	this.Url = url
 	return &this
 }
 
@@ -180,28 +179,36 @@ func (o *FundingInformation) SetIsUserDefined(v int64) {
 	o.IsUserDefined = v
 }
 
-// GetUrl returns the Url field value
+// GetUrl returns the Url field value if set, zero value otherwise.
 func (o *FundingInformation) GetUrl() string {
-	if o == nil {
+	if o == nil || IsNil(o.Url) {
 		var ret string
 		return ret
 	}
-
-	return o.Url
+	return *o.Url
 }
 
-// GetUrlOk returns a tuple with the Url field value
+// GetUrlOk returns a tuple with the Url field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *FundingInformation) GetUrlOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Url) {
 		return nil, false
 	}
-	return &o.Url, true
+	return o.Url, true
 }
 
-// SetUrl sets field value
+// HasUrl returns a boolean if a field has been set.
+func (o *FundingInformation) HasUrl() bool {
+	if o != nil && !IsNil(o.Url) {
+		return true
+	}
+
+	return false
+}
+
+// SetUrl gets a reference to the given string and assigns it to the Url field.
 func (o *FundingInformation) SetUrl(v string) {
-	o.Url = v
+	o.Url = &v
 }
 
 func (o FundingInformation) MarshalJSON() ([]byte, error) {
@@ -219,7 +226,9 @@ func (o FundingInformation) ToMap() (map[string]interface{}, error) {
 	toSerialize["grant_code"] = o.GrantCode
 	toSerialize["funder_name"] = o.FunderName
 	toSerialize["is_user_defined"] = o.IsUserDefined
-	toSerialize["url"] = o.Url
+	if !IsNil(o.Url) {
+		toSerialize["url"] = o.Url
+	}
 	return toSerialize, nil
 }
 
@@ -233,7 +242,6 @@ func (o *FundingInformation) UnmarshalJSON(data []byte) (err error) {
 		"grant_code",
 		"funder_name",
 		"is_user_defined",
-		"url",
 	}
 
 	allProperties := make(map[string]interface{})
