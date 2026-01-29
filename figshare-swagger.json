@@ -186,7 +186,7 @@
           {
             "name": "modified_since",
             "in": "query",
-            "description": "Filter by article modified date. Will only return articles published after the date. date(ISO 8601) YYYY-MM-DD or date-time(ISO 8601) YYYY-MM-DDTHH:mm:ssZ",
+            "description": "Filter by article modified date. Will only return articles modified after the date. date(ISO 8601) YYYY-MM-DD or date-time(ISO 8601) YYYY-MM-DDTHH:mm:ssZ",
             "type": "string",
             "required": false
           },
@@ -3156,7 +3156,7 @@
           {
             "name": "modified_since",
             "in": "query",
-            "description": "Filter by collection modified date. Will only return collections published after the date. date(ISO 8601) YYYY-MM-DD",
+            "description": "Filter by collection modified date. Will only return collections modified after the date. date(ISO 8601) YYYY-MM-DD",
             "type": "string",
             "required": false
           },
@@ -7239,7 +7239,7 @@
           {
             "name": "modified_since",
             "in": "query",
-            "description": "Filter by article modified date. Will only return articles published after the date. date(ISO 8601) YYYY-MM-DD or date-time(ISO 8601) YYYY-MM-DDTHH:mm:ssZ",
+            "description": "Filter by article modified date. Will only return articles modified after the date. date(ISO 8601) YYYY-MM-DD or date-time(ISO 8601) YYYY-MM-DDTHH:mm:ssZ",
             "type": "string",
             "required": false
           },
@@ -8852,8 +8852,10 @@
         },
         "domain": {
           "description": "Institution domain",
-          "type": "string",
-          "x-nullable": true,
+          "type": [
+            "string",
+            "null"
+          ],
           "example": null
         }
       }
@@ -9182,8 +9184,10 @@
           "example": "http://api.figshare.com/v2/account/projects/1"
         },
         "published_date": {
-          "type": "string",
-          "x-nullable": true,
+          "type": [
+            "string",
+            "null"
+          ],
           "description": "Date when project was published",
           "example": "2017-05-16T14:55:08Z"
         },
@@ -9292,8 +9296,10 @@
           "example": "description"
         },
         "figshare_url": {
-          "type": "string",
-          "x-nullable": true,
+          "type": [
+            "string",
+            "null"
+          ],
           "description": "Project public url",
           "example": "https://figshare.com/projects/project/1"
         },
@@ -9373,8 +9379,10 @@
           "example": "description"
         },
         "figshare_url": {
-          "type": "string",
-          "x-nullable": true,
+          "type": [
+            "string",
+            "null"
+          ],
           "description": "Project public url",
           "example": "https://figshare.com/projects/project/1"
         },
@@ -9623,7 +9631,7 @@
           "example": "2017-12-22"
         },
         "modified_since": {
-          "description": "Filter by article modified date. Will only return articles published after the date. date(ISO 8601) YYYY-MM-DD or date-time(ISO 8601) YYYY-MM-DDTHH:mm:ssZ",
+          "description": "Filter by article modified date. Will only return articles modified after the date. date(ISO 8601) YYYY-MM-DD or date-time(ISO 8601) YYYY-MM-DDTHH:mm:ssZ",
           "type": "string",
           "example": "2017-12-22"
         },
@@ -10021,8 +10029,10 @@
           "description": "The date the review has been modified."
         },
         "review_date": {
-          "type": "string",
-          "x-nullable": true,
+          "type": [
+            "string",
+            "null"
+          ],
           "description": "The last time a comment has been added to the review."
         },
         "request_number": {
@@ -10688,8 +10698,10 @@
           "example": "http://figshare.com/articles/media/article_name/2000005"
         },
         "group_resource_id": {
-          "type": "string",
-          "x-nullable": true,
+          "type": [
+            "string",
+            "null"
+          ],
           "description": "Collection group resource id",
           "example": 1
         },
@@ -10930,8 +10942,10 @@
           "example": "111184/figshare.1234"
         },
         "group_id": {
-          "type": "number",
-          "x-nullable": true,
+          "type": [
+            "number",
+            "null"
+          ],
           "description": "Group ID",
           "example": 1234
         },
@@ -10966,8 +10980,10 @@
           "example": "https://api.figshare.com/account/articles/1434614"
         },
         "published_date": {
-          "type": "string",
-          "x-nullable": true,
+          "type": [
+            "string",
+            "null"
+          ],
           "description": "Posted date",
           "example": "2015-12-31T23:59:59.000Z"
         },
@@ -11010,8 +11026,10 @@
         },
         "modified_date": {
           "description": "Date when article was last modified",
-          "type": "string",
-          "x-nullable": true,
+          "type": [
+            "string",
+            "null"
+          ],
           "example": "2017-05-18T11:49:03Z"
         }
       }
@@ -11085,26 +11103,34 @@
       ],
       "required": [
         "posted",
+        "submission",
+        "revision",
         "firstOnline",
         "publisherPublication",
         "publisherAcceptance"
       ],
       "properties": {
         "posted": {
-          "type": "string",
-          "x-nullable": true,
+          "type": [
+            "string",
+            "null"
+          ],
           "description": "Posted date",
           "example": "2015-12-31"
         },
         "submission": {
-          "type": "string",
-          "x-nullable": true,
+          "type": [
+            "string",
+            "null"
+          ],
           "description": "Submission date in curation (if curated)",
           "example": "2015-12-31"
         },
         "revision": {
-          "type": "string",
-          "x-nullable": true,
+          "type": [
+            "string",
+            "null"
+          ],
           "description": "Revision date from curation (if curated)",
           "example": "2015-12-31"
         }
@@ -11173,8 +11199,10 @@
         },
         "embargo_type": {
           "description": "Article embargo",
-          "type": "string",
-          "x-nullable": true,
+          "type": [
+            "string",
+            "null"
+          ],
           "example": "article"
         },
         "is_confidential": {
@@ -11258,8 +11286,10 @@
         },
         "embargo_date": {
           "description": "Date when embargo lifts",
-          "type": "string",
-          "x-nullable": true,
+          "type": [
+            "string",
+            "null"
+          ],
           "example": "2017-05-18T11:49:03Z"
         },
         "is_public": {
@@ -11269,8 +11299,10 @@
         },
         "modified_date": {
           "description": "Date when article was last modified",
-          "type": "string",
-          "x-nullable": true,
+          "type": [
+            "string",
+            "null"
+          ],
           "example": "2017-05-18T11:49:03Z"
         },
         "created_date": {
@@ -11409,7 +11441,7 @@
         },
         "files": {
           "type": "array",
-          "description": "List of article files.",
+          "description": "List of article files",
           "items": {
             "$ref": "#/definitions/PublicFile"
           }
@@ -11509,8 +11541,10 @@
       ],
       "properties": {
         "group_resource_id": {
-          "type": "string",
-          "x-nullable": true,
+          "type": [
+            "string",
+            "null"
+          ],
           "description": "Group resource id",
           "example": 1
         },
@@ -11710,8 +11744,10 @@
           "example": "citation"
         },
         "group_resource_id": {
-          "type": "string",
-          "x-nullable": true,
+          "type": [
+            "string",
+            "null"
+          ],
           "description": "Collection group resource id",
           "example": 1
         },
@@ -11916,14 +11952,18 @@
           "description": "True if embargoed"
         },
         "embargo_date": {
-          "type": "string",
-          "x-nullable": true,
+          "type": [
+            "string",
+            "null"
+          ],
           "description": "Date when embargo lifts",
           "example": "2018-05-22T04:04:04"
         },
         "embargo_type": {
-          "type": "string",
-          "x-nullable": true,
+          "type": [
+            "string",
+            "null"
+          ],
           "description": "Embargo type",
           "example": "article"
         },
@@ -12084,7 +12124,6 @@
         },
         "value": {
           "description": "Custom metadata value (can be either a string or an array of strings)",
-          "type": "string",
           "example": "value"
         },
         "field_type": {
@@ -12208,8 +12247,10 @@
       ],
       "properties": {
         "status": {
-          "type": "string",
-          "x-nullable": true,
+          "type": [
+            "string",
+            "null"
+          ],
           "description": "Status for file upload",
           "example": "created"
         },
@@ -12974,8 +13015,10 @@
           "$ref": "#/definitions/Timeline"
         },
         "published_date": {
-          "type": "string",
-          "x-nullable": true,
+          "type": [
+            "string",
+            "null"
+          ],
           "description": "Date when collection was published ",
           "example": "2015-08-12T00:39:55"
         }
@@ -13158,8 +13201,10 @@
           "example": "citation"
         },
         "group_resource_id": {
-          "type": "string",
-          "x-nullable": true,
+          "type": [
+            "string",
+            "null"
+          ],
           "description": "Collection group resource id",
           "example": 1
         },
@@ -13715,7 +13760,8 @@
         "title",
         "grant_code",
         "funder_name",
-        "is_user_defined"
+        "is_user_defined",
+        "url"
       ],
       "properties": {
         "id": {
