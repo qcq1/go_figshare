@@ -9910,7 +9910,6 @@ components:
       - thumb
       - timeline
       - title
-      - url
       - url_private_api
       - url_private_html
       - url_public_api

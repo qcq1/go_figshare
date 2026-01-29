@@ -83,7 +83,7 @@ type ProjectArticle struct {
 	// Group ID
 	GroupId NullableFloat32 `json:"group_id"`
 	// Api endpoint for article
-	Url string `json:"url"`
+	Url *string `json:"url,omitempty"`
 	// Public site endpoint for article
 	UrlPublicHtml string `json:"url_public_html"`
 	// Public Api endpoint for article
@@ -113,14 +113,13 @@ type _ProjectArticle ProjectArticle
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewProjectArticle(citation string, confidentialReason string, embargoType NullableString, isConfidential bool, size int64, funding string, fundingList []FundingInformation, tags []string, keywords []string, version int64, isMetadataRecord bool, metadataReason string, status string, description string, isEmbargoed bool, embargoDate NullableString, isPublic bool, modifiedDate NullableString, createdDate string, hasLinkedFile bool, categories []Category, license License, embargoTitle string, embargoReason string, references []string, id int64, title string, doi string, handle string, groupId NullableFloat32, url string, urlPublicHtml string, urlPublicApi string, urlPrivateHtml string, urlPrivateApi string, publishedDate NullableString, timeline Timeline, thumb string, definedType int64, definedTypeName string, resourceDoi string, resourceTitle string) *ProjectArticle {
+func NewProjectArticle(citation string, confidentialReason string, embargoType NullableString, isConfidential bool, size int64, funding string, fundingList []FundingInformation, tags []string, keywords []string, version int64, isMetadataRecord bool, metadataReason string, status string, description string, isEmbargoed bool, embargoDate NullableString, isPublic bool, modifiedDate NullableString, createdDate string, hasLinkedFile bool, categories []Category, license License, embargoTitle string, embargoReason string, references []string, id int64, title string, doi string, handle string, groupId NullableFloat32, urlPublicHtml string, urlPublicApi string, urlPrivateHtml string, urlPrivateApi string, publishedDate NullableString, timeline Timeline, thumb string, definedType int64, definedTypeName string, resourceDoi string, resourceTitle string) *ProjectArticle {
 	this := ProjectArticle{}
 	this.Id = id
 	this.Title = title
 	this.Doi = doi
 	this.Handle = handle
 	this.GroupId = groupId
-	this.Url = url
 	this.UrlPublicHtml = urlPublicHtml
 	this.UrlPublicApi = urlPublicApi
 	this.UrlPrivateHtml = urlPrivateHtml
@@ -909,28 +908,36 @@ func (o *ProjectArticle) SetGroupId(v float32) {
 	o.GroupId.Set(&v)
 }
 
-// GetUrl returns the Url field value
+// GetUrl returns the Url field value if set, zero value otherwise.
 func (o *ProjectArticle) GetUrl() string {
-	if o == nil {
+	if o == nil || IsNil(o.Url) {
 		var ret string
 		return ret
 	}
-
-	return o.Url
+	return *o.Url
 }
 
-// GetUrlOk returns a tuple with the Url field value
+// GetUrlOk returns a tuple with the Url field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ProjectArticle) GetUrlOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Url) {
 		return nil, false
 	}
-	return &o.Url, true
+	return o.Url, true
 }
 
-// SetUrl sets field value
+// HasUrl returns a boolean if a field has been set.
+func (o *ProjectArticle) HasUrl() bool {
+	if o != nil && !IsNil(o.Url) {
+		return true
+	}
+
+	return false
+}
+
+// SetUrl gets a reference to the given string and assigns it to the Url field.
 func (o *ProjectArticle) SetUrl(v string) {
-	o.Url = v
+	o.Url = &v
 }
 
 // GetUrlPublicHtml returns the UrlPublicHtml field value
@@ -1242,7 +1249,9 @@ func (o ProjectArticle) ToMap() (map[string]interface{}, error) {
 	toSerialize["doi"] = o.Doi
 	toSerialize["handle"] = o.Handle
 	toSerialize["group_id"] = o.GroupId.Get()
-	toSerialize["url"] = o.Url
+	if !IsNil(o.Url) {
+		toSerialize["url"] = o.Url
+	}
 	toSerialize["url_public_html"] = o.UrlPublicHtml
 	toSerialize["url_public_api"] = o.UrlPublicApi
 	toSerialize["url_private_html"] = o.UrlPrivateHtml
@@ -1292,7 +1301,6 @@ func (o *ProjectArticle) UnmarshalJSON(data []byte) (err error) {
 		"doi",
 		"handle",
 		"group_id",
-		"url",
 		"url_public_html",
 		"url_public_api",
 		"url_private_html",

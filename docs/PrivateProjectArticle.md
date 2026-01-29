@@ -44,7 +44,7 @@ Name | Type | Description | Notes
 **Doi** | **string** | DOI | 
 **Handle** | **string** | Handle | 
 **GroupId** | **NullableFloat32** | Group ID | 
-**Url** | **string** | Api endpoint for article | 
+**Url** | Pointer to **string** | Api endpoint for article | [optional] 
 **UrlPublicHtml** | **string** | Public site endpoint for article | 
 **UrlPublicApi** | **string** | Public Api endpoint for article | 
 **UrlPrivateHtml** | **string** | Private site endpoint for article | 
@@ -61,7 +61,7 @@ Name | Type | Description | Notes
 
 ### NewPrivateProjectArticle
 
-`func NewPrivateProjectArticle(files []PublicFile, embargoOptions []GroupEmbargoOptions, customFields []CustomArticleField, accountId int64, downloadDisabled bool, authors []Author, figshareUrl string, groupResourceId NullableString, curationStatus string, citation string, confidentialReason string, embargoType NullableString, isConfidential bool, size int64, funding string, fundingList []FundingInformation, tags []string, keywords []string, version int64, isMetadataRecord bool, metadataReason string, status string, description string, isEmbargoed bool, embargoDate NullableString, isPublic bool, modifiedDate NullableString, createdDate string, hasLinkedFile bool, categories []Category, license License, embargoTitle string, embargoReason string, references []string, id int64, title string, doi string, handle string, groupId NullableFloat32, url string, urlPublicHtml string, urlPublicApi string, urlPrivateHtml string, urlPrivateApi string, publishedDate NullableString, timeline Timeline, thumb string, definedType int64, definedTypeName string, resourceDoi string, resourceTitle string, ) *PrivateProjectArticle`
+`func NewPrivateProjectArticle(files []PublicFile, embargoOptions []GroupEmbargoOptions, customFields []CustomArticleField, accountId int64, downloadDisabled bool, authors []Author, figshareUrl string, groupResourceId NullableString, curationStatus string, citation string, confidentialReason string, embargoType NullableString, isConfidential bool, size int64, funding string, fundingList []FundingInformation, tags []string, keywords []string, version int64, isMetadataRecord bool, metadataReason string, status string, description string, isEmbargoed bool, embargoDate NullableString, isPublic bool, modifiedDate NullableString, createdDate string, hasLinkedFile bool, categories []Category, license License, embargoTitle string, embargoReason string, references []string, id int64, title string, doi string, handle string, groupId NullableFloat32, urlPublicHtml string, urlPublicApi string, urlPrivateHtml string, urlPrivateApi string, publishedDate NullableString, timeline Timeline, thumb string, definedType int64, definedTypeName string, resourceDoi string, resourceTitle string, ) *PrivateProjectArticle`
 
 NewPrivateProjectArticle instantiates a new PrivateProjectArticle object
 This constructor will assign default values to properties that have it defined,
@@ -950,6 +950,11 @@ and a boolean to check if the value has been set.
 
 SetUrl sets Url field to given value.
 
+### HasUrl
+
+`func (o *PrivateProjectArticle) HasUrl() bool`
+
+HasUrl returns a boolean if a field has been set.
 
 ### GetUrlPublicHtml
 

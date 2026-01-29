@@ -32,7 +32,7 @@ type Article struct {
 	// Group ID
 	GroupId NullableFloat32 `json:"group_id"`
 	// Api endpoint for article
-	Url string `json:"url"`
+	Url *string `json:"url,omitempty"`
 	// Public site endpoint for article
 	UrlPublicHtml string `json:"url_public_html"`
 	// Public Api endpoint for article
@@ -66,14 +66,13 @@ type _Article Article
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewArticle(id int64, title string, doi string, handle string, groupId NullableFloat32, url string, urlPublicHtml string, urlPublicApi string, urlPrivateHtml string, urlPrivateApi string, publishedDate NullableString, timeline Timeline, thumb string, definedType int64, definedTypeName string, resourceDoi string, resourceTitle string, createdDate string, modifiedDate NullableString) *Article {
+func NewArticle(id int64, title string, doi string, handle string, groupId NullableFloat32, urlPublicHtml string, urlPublicApi string, urlPrivateHtml string, urlPrivateApi string, publishedDate NullableString, timeline Timeline, thumb string, definedType int64, definedTypeName string, resourceDoi string, resourceTitle string, createdDate string, modifiedDate NullableString) *Article {
 	this := Article{}
 	this.Id = id
 	this.Title = title
 	this.Doi = doi
 	this.Handle = handle
 	this.GroupId = groupId
-	this.Url = url
 	this.UrlPublicHtml = urlPublicHtml
 	this.UrlPublicApi = urlPublicApi
 	this.UrlPrivateHtml = urlPrivateHtml
@@ -224,28 +223,36 @@ func (o *Article) SetGroupId(v float32) {
 	o.GroupId.Set(&v)
 }
 
-// GetUrl returns the Url field value
+// GetUrl returns the Url field value if set, zero value otherwise.
 func (o *Article) GetUrl() string {
-	if o == nil {
+	if o == nil || IsNil(o.Url) {
 		var ret string
 		return ret
 	}
-
-	return o.Url
+	return *o.Url
 }
 
-// GetUrlOk returns a tuple with the Url field value
+// GetUrlOk returns a tuple with the Url field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Article) GetUrlOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Url) {
 		return nil, false
 	}
-	return &o.Url, true
+	return o.Url, true
 }
 
-// SetUrl sets field value
+// HasUrl returns a boolean if a field has been set.
+func (o *Article) HasUrl() bool {
+	if o != nil && !IsNil(o.Url) {
+		return true
+	}
+
+	return false
+}
+
+// SetUrl gets a reference to the given string and assigns it to the Url field.
 func (o *Article) SetUrl(v string) {
-	o.Url = v
+	o.Url = &v
 }
 
 // GetUrlPublicHtml returns the UrlPublicHtml field value
@@ -579,7 +586,9 @@ func (o Article) ToMap() (map[string]interface{}, error) {
 	toSerialize["doi"] = o.Doi
 	toSerialize["handle"] = o.Handle
 	toSerialize["group_id"] = o.GroupId.Get()
-	toSerialize["url"] = o.Url
+	if !IsNil(o.Url) {
+		toSerialize["url"] = o.Url
+	}
 	toSerialize["url_public_html"] = o.UrlPublicHtml
 	toSerialize["url_public_api"] = o.UrlPublicApi
 	toSerialize["url_private_html"] = o.UrlPrivateHtml
@@ -606,7 +615,6 @@ func (o *Article) UnmarshalJSON(data []byte) (err error) {
 		"doi",
 		"handle",
 		"group_id",
-		"url",
 		"url_public_html",
 		"url_public_api",
 		"url_private_html",
