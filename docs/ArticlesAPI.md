@@ -82,7 +82,7 @@ No authorization required
 
 ## ArticlesList
 
-> Article ArticlesList(ctx).XCursor(xCursor).Page(page).PageSize(pageSize).Limit(limit).Offset(offset).Order(order).OrderDirection(orderDirection).Institution(institution).PublishedSince(publishedSince).ModifiedSince(modifiedSince).Group(group).ResourceDoi(resourceDoi).ItemType(itemType).Doi(doi).Handle(handle).Execute()
+> []Article ArticlesList(ctx).XCursor(xCursor).Page(page).PageSize(pageSize).Limit(limit).Offset(offset).Order(order).OrderDirection(orderDirection).Institution(institution).PublishedSince(publishedSince).ModifiedSince(modifiedSince).Group(group).ResourceDoi(resourceDoi).ItemType(itemType).Doi(doi).Handle(handle).Execute()
 
 Public Articles
 
@@ -124,7 +124,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `ArticlesAPI.ArticlesList``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ArticlesList`: Article
+	// response from `ArticlesList`: []Article
 	fmt.Fprintf(os.Stdout, "Response from `ArticlesAPI.ArticlesList`: %v\n", resp)
 }
 ```
@@ -158,7 +158,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Article**](Article.md)
+[**[]Article**](Article.md)
 
 ### Authorization
 

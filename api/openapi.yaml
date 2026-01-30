@@ -181,7 +181,9 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Article'
+                items:
+                  $ref: '#/components/schemas/Article'
+                type: array
           description: OK. An array of articles
           headers:
             X-Cursor:

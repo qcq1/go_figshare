@@ -238,7 +238,7 @@ func (r ApiArticlesListRequest) Handle(handle string) ApiArticlesListRequest {
 	return r
 }
 
-func (r ApiArticlesListRequest) Execute() (*Article, *http.Response, error) {
+func (r ApiArticlesListRequest) Execute() ([]Article, *http.Response, error) {
 	return r.ApiService.ArticlesListExecute(r)
 }
 
@@ -258,13 +258,13 @@ func (a *ArticlesAPIService) ArticlesList(ctx context.Context) ApiArticlesListRe
 }
 
 // Execute executes the request
-//  @return Article
-func (a *ArticlesAPIService) ArticlesListExecute(r ApiArticlesListRequest) (*Article, *http.Response, error) {
+//  @return []Article
+func (a *ArticlesAPIService) ArticlesListExecute(r ApiArticlesListRequest) ([]Article, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *Article
+		localVarReturnValue  []Article
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ArticlesAPIService.ArticlesList")
