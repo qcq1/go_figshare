@@ -13,7 +13,6 @@ package go_figshare
 import (
 	"bytes"
 	"context"
-	"fmt"
 	"io"
 	"net/http"
 	"net/url"
@@ -588,9 +587,6 @@ func (a *ArticlesAPIService) GetAggregatedCitationsExecute(r ApiGetAggregatedCit
 	parameterAddToHeaderOrQuery(localVarQueryParams, "and_subset_figshare_doi", r.andSubsetFigshareDoi, "")
 	if r.vizStaggr != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "viz-st:aggr", r.vizStaggr, "")
-	} else {
-		var defaultValue string = "mean"
-		r.vizStaggr = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -621,7 +617,6 @@ func (a *ArticlesAPIService) GetAggregatedCitationsExecute(r ApiGetAggregatedCit
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
-	fmt.Printf("req: %v", req)
 
 	localVarHTTPResponse, err := a.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {

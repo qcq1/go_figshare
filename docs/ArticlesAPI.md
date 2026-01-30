@@ -269,8 +269,8 @@ func main() {
 	andSubsetFigshareDoi := "andSubsetFigshareDoi_example" // string | Article DOI
 	cookie := "cookie_example" // string | 必须包含 session 和 uber_auth_tkt
 	xCsrfToken := "xCsrfToken_example" // string | 
-	vizStaggr := "vizStaggr_example" // string |  (optional) (default to "mean")
-	userAgent := "userAgent_example" // string |  (optional) (default to "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36")
+	vizStaggr := "vizStaggr_example" // string |  (optional)
+	userAgent := "userAgent_example" // string |  (optional)
 	referer := "referer_example" // string |  (optional)
 
 	configuration := openapiclient.NewConfiguration()
@@ -299,8 +299,8 @@ Name | Type | Description  | Notes
  **andSubsetFigshareDoi** | **string** | Article DOI | 
  **cookie** | **string** | 必须包含 session 和 uber_auth_tkt | 
  **xCsrfToken** | **string** |  | 
- **vizStaggr** | **string** |  | [default to &quot;mean&quot;]
- **userAgent** | **string** |  | [default to &quot;Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36&quot;]
+ **vizStaggr** | **string** |  | 
+ **userAgent** | **string** |  | 
  **referer** | **string** |  | 
 
 ### Return type

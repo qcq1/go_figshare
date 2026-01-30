@@ -289,7 +289,6 @@ paths:
         name: viz-st:aggr
         required: false
         schema:
-          default: mean
           type: string
         style: form
       - description: 必须包含 session 和 uber_auth_tkt
@@ -312,8 +311,6 @@ paths:
         name: User-Agent
         required: false
         schema:
-          default: "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36\
-            \ (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36"
           type: string
         style: simple
       - explode: false
