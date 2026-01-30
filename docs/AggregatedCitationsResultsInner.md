@@ -7,8 +7,6 @@ Name | Type | Description | Notes
 **Id** | Pointer to **string** |  | [optional] 
 **Name** | Pointer to [**AggregatedCitationsResultsInnerName**](AggregatedCitationsResultsInnerName.md) |  | [optional] 
 **Count** | Pointer to [**AggregatedCitationsResultsInnerCount**](AggregatedCitationsResultsInnerCount.md) |  | [optional] 
-**TimesCitedAvg** | Pointer to [**AggregatedCitationsResultsInnerTimesCitedAvg**](AggregatedCitationsResultsInnerTimesCitedAvg.md) |  | [optional] 
-**TimesCitedSum** | Pointer to [**AggregatedCitationsResultsInnerTimesCitedAvg**](AggregatedCitationsResultsInnerTimesCitedAvg.md) |  | [optional] 
 
 ## Methods
 
@@ -103,56 +101,6 @@ SetCount sets Count field to given value.
 `func (o *AggregatedCitationsResultsInner) HasCount() bool`
 
 HasCount returns a boolean if a field has been set.
-
-### GetTimesCitedAvg
-
-`func (o *AggregatedCitationsResultsInner) GetTimesCitedAvg() AggregatedCitationsResultsInnerTimesCitedAvg`
-
-GetTimesCitedAvg returns the TimesCitedAvg field if non-nil, zero value otherwise.
-
-### GetTimesCitedAvgOk
-
-`func (o *AggregatedCitationsResultsInner) GetTimesCitedAvgOk() (*AggregatedCitationsResultsInnerTimesCitedAvg, bool)`
-
-GetTimesCitedAvgOk returns a tuple with the TimesCitedAvg field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetTimesCitedAvg
-
-`func (o *AggregatedCitationsResultsInner) SetTimesCitedAvg(v AggregatedCitationsResultsInnerTimesCitedAvg)`
-
-SetTimesCitedAvg sets TimesCitedAvg field to given value.
-
-### HasTimesCitedAvg
-
-`func (o *AggregatedCitationsResultsInner) HasTimesCitedAvg() bool`
-
-HasTimesCitedAvg returns a boolean if a field has been set.
-
-### GetTimesCitedSum
-
-`func (o *AggregatedCitationsResultsInner) GetTimesCitedSum() AggregatedCitationsResultsInnerTimesCitedAvg`
-
-GetTimesCitedSum returns the TimesCitedSum field if non-nil, zero value otherwise.
-
-### GetTimesCitedSumOk
-
-`func (o *AggregatedCitationsResultsInner) GetTimesCitedSumOk() (*AggregatedCitationsResultsInnerTimesCitedAvg, bool)`
-
-GetTimesCitedSumOk returns a tuple with the TimesCitedSum field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetTimesCitedSum
-
-`func (o *AggregatedCitationsResultsInner) SetTimesCitedSum(v AggregatedCitationsResultsInnerTimesCitedAvg)`
-
-SetTimesCitedSum sets TimesCitedSum field to given value.
-
-### HasTimesCitedSum
-
-`func (o *AggregatedCitationsResultsInner) HasTimesCitedSum() bool`
-
-HasTimesCitedSum returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

@@ -22,8 +22,6 @@ type AggregatedCitationsResultsInner struct {
 	Id *string `json:"id,omitempty"`
 	Name *AggregatedCitationsResultsInnerName `json:"name,omitempty"`
 	Count *AggregatedCitationsResultsInnerCount `json:"count,omitempty"`
-	TimesCitedAvg *AggregatedCitationsResultsInnerTimesCitedAvg `json:"times_cited_avg,omitempty"`
-	TimesCitedSum *AggregatedCitationsResultsInnerTimesCitedAvg `json:"times_cited_sum,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -142,70 +140,6 @@ func (o *AggregatedCitationsResultsInner) SetCount(v AggregatedCitationsResultsI
 	o.Count = &v
 }
 
-// GetTimesCitedAvg returns the TimesCitedAvg field value if set, zero value otherwise.
-func (o *AggregatedCitationsResultsInner) GetTimesCitedAvg() AggregatedCitationsResultsInnerTimesCitedAvg {
-	if o == nil || IsNil(o.TimesCitedAvg) {
-		var ret AggregatedCitationsResultsInnerTimesCitedAvg
-		return ret
-	}
-	return *o.TimesCitedAvg
-}
-
-// GetTimesCitedAvgOk returns a tuple with the TimesCitedAvg field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AggregatedCitationsResultsInner) GetTimesCitedAvgOk() (*AggregatedCitationsResultsInnerTimesCitedAvg, bool) {
-	if o == nil || IsNil(o.TimesCitedAvg) {
-		return nil, false
-	}
-	return o.TimesCitedAvg, true
-}
-
-// HasTimesCitedAvg returns a boolean if a field has been set.
-func (o *AggregatedCitationsResultsInner) HasTimesCitedAvg() bool {
-	if o != nil && !IsNil(o.TimesCitedAvg) {
-		return true
-	}
-
-	return false
-}
-
-// SetTimesCitedAvg gets a reference to the given AggregatedCitationsResultsInnerTimesCitedAvg and assigns it to the TimesCitedAvg field.
-func (o *AggregatedCitationsResultsInner) SetTimesCitedAvg(v AggregatedCitationsResultsInnerTimesCitedAvg) {
-	o.TimesCitedAvg = &v
-}
-
-// GetTimesCitedSum returns the TimesCitedSum field value if set, zero value otherwise.
-func (o *AggregatedCitationsResultsInner) GetTimesCitedSum() AggregatedCitationsResultsInnerTimesCitedAvg {
-	if o == nil || IsNil(o.TimesCitedSum) {
-		var ret AggregatedCitationsResultsInnerTimesCitedAvg
-		return ret
-	}
-	return *o.TimesCitedSum
-}
-
-// GetTimesCitedSumOk returns a tuple with the TimesCitedSum field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AggregatedCitationsResultsInner) GetTimesCitedSumOk() (*AggregatedCitationsResultsInnerTimesCitedAvg, bool) {
-	if o == nil || IsNil(o.TimesCitedSum) {
-		return nil, false
-	}
-	return o.TimesCitedSum, true
-}
-
-// HasTimesCitedSum returns a boolean if a field has been set.
-func (o *AggregatedCitationsResultsInner) HasTimesCitedSum() bool {
-	if o != nil && !IsNil(o.TimesCitedSum) {
-		return true
-	}
-
-	return false
-}
-
-// SetTimesCitedSum gets a reference to the given AggregatedCitationsResultsInnerTimesCitedAvg and assigns it to the TimesCitedSum field.
-func (o *AggregatedCitationsResultsInner) SetTimesCitedSum(v AggregatedCitationsResultsInnerTimesCitedAvg) {
-	o.TimesCitedSum = &v
-}
-
 func (o AggregatedCitationsResultsInner) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -224,12 +158,6 @@ func (o AggregatedCitationsResultsInner) ToMap() (map[string]interface{}, error)
 	}
 	if !IsNil(o.Count) {
 		toSerialize["count"] = o.Count
-	}
-	if !IsNil(o.TimesCitedAvg) {
-		toSerialize["times_cited_avg"] = o.TimesCitedAvg
-	}
-	if !IsNil(o.TimesCitedSum) {
-		toSerialize["times_cited_sum"] = o.TimesCitedSum
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -256,8 +184,6 @@ func (o *AggregatedCitationsResultsInner) UnmarshalJSON(data []byte) (err error)
 		delete(additionalProperties, "id")
 		delete(additionalProperties, "name")
 		delete(additionalProperties, "count")
-		delete(additionalProperties, "times_cited_avg")
-		delete(additionalProperties, "times_cited_sum")
 		o.AdditionalProperties = additionalProperties
 	}
 

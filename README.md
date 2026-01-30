@@ -90,7 +90,6 @@ Class | Method | HTTP request | Description
  - [AggregatedCitationsResultsInner](docs/AggregatedCitationsResultsInner.md)
  - [AggregatedCitationsResultsInnerCount](docs/AggregatedCitationsResultsInnerCount.md)
  - [AggregatedCitationsResultsInnerName](docs/AggregatedCitationsResultsInnerName.md)
- - [AggregatedCitationsResultsInnerTimesCitedAvg](docs/AggregatedCitationsResultsInnerTimesCitedAvg.md)
  - [Article](docs/Article.md)
  - [ArticleComplete](docs/ArticleComplete.md)
  - [Category](docs/Category.md)

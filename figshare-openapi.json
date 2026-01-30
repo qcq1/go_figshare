@@ -952,24 +952,6 @@
                       "format": "int64"
                     }
                   }
-                },
-                "times_cited_avg": {
-                  "type": "object",
-                  "properties": {
-                    "label": {
-                      "type": "number",
-                      "format": "float64"
-                    }
-                  }
-                },
-                "times_cited_sum": {
-                  "type": "object",
-                  "properties": {
-                    "label": {
-                      "type": "number",
-                      "format": "float64"
-                    }
-                  }
                 }
               }
             }
