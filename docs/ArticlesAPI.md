@@ -82,7 +82,7 @@ No authorization required
 
 ## ArticlesList
 
-> Article ArticlesList(ctx).Page(page).PageSize(pageSize).Limit(limit).Offset(offset).Order(order).OrderDirection(orderDirection).Institution(institution).PublishedSince(publishedSince).ModifiedSince(modifiedSince).Group(group).ResourceDoi(resourceDoi).ItemType(itemType).Doi(doi).Handle(handle).Execute()
+> Article ArticlesList(ctx).XCursor(xCursor).Page(page).PageSize(pageSize).Limit(limit).Offset(offset).Order(order).OrderDirection(orderDirection).Institution(institution).PublishedSince(publishedSince).ModifiedSince(modifiedSince).Group(group).ResourceDoi(resourceDoi).ItemType(itemType).Doi(doi).Handle(handle).Execute()
 
 Public Articles
 
@@ -101,6 +101,7 @@ import (
 )
 
 func main() {
+	xCursor := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Unique hash used for bypassing the item retrieval limit of 9,000 entities. When using this parameter, please note that the offset parameter will not be available, but the limit parameter will still work as expected. (optional)
 	page := int64(789) // int64 | Page number. Used for pagination with page_size (optional)
 	pageSize := int64(789) // int64 | The number of results included on a page. Used for pagination with page (optional) (default to 10)
 	limit := int64(789) // int64 | Number of results included on a page. Used for pagination with query (optional)
@@ -118,7 +119,7 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ArticlesAPI.ArticlesList(context.Background()).Page(page).PageSize(pageSize).Limit(limit).Offset(offset).Order(order).OrderDirection(orderDirection).Institution(institution).PublishedSince(publishedSince).ModifiedSince(modifiedSince).Group(group).ResourceDoi(resourceDoi).ItemType(itemType).Doi(doi).Handle(handle).Execute()
+	resp, r, err := apiClient.ArticlesAPI.ArticlesList(context.Background()).XCursor(xCursor).Page(page).PageSize(pageSize).Limit(limit).Offset(offset).Order(order).OrderDirection(orderDirection).Institution(institution).PublishedSince(publishedSince).ModifiedSince(modifiedSince).Group(group).ResourceDoi(resourceDoi).ItemType(itemType).Doi(doi).Handle(handle).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `ArticlesAPI.ArticlesList``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -139,6 +140,7 @@ Other parameters are passed through a pointer to a apiArticlesListRequest struct
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **xCursor** | **string** | Unique hash used for bypassing the item retrieval limit of 9,000 entities. When using this parameter, please note that the offset parameter will not be available, but the limit parameter will still work as expected. | 
  **page** | **int64** | Page number. Used for pagination with page_size | 
  **pageSize** | **int64** | The number of results included on a page. Used for pagination with page | [default to 10]
  **limit** | **int64** | Number of results included on a page. Used for pagination with query | 

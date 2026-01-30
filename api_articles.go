@@ -132,6 +132,7 @@ func (a *ArticlesAPIService) ArticleDetailsExecute(r ApiArticleDetailsRequest) (
 type ApiArticlesListRequest struct {
 	ctx context.Context
 	ApiService *ArticlesAPIService
+	xCursor *string
 	page *int64
 	pageSize *int64
 	limit *int64
@@ -146,6 +147,12 @@ type ApiArticlesListRequest struct {
 	itemType *int64
 	doi *string
 	handle *string
+}
+
+// Unique hash used for bypassing the item retrieval limit of 9,000 entities. When using this parameter, please note that the offset parameter will not be available, but the limit parameter will still work as expected.
+func (r ApiArticlesListRequest) XCursor(xCursor string) ApiArticlesListRequest {
+	r.xCursor = &xCursor
+	return r
 }
 
 // Page number. Used for pagination with page_size
@@ -338,6 +345,9 @@ func (a *ArticlesAPIService) ArticlesListExecute(r ApiArticlesListRequest) (*Art
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.xCursor != nil {
+		parameterAddToHeaderOrQuery(localVarHeaderParams, "X-Cursor", r.xCursor, "")
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
