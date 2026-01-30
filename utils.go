@@ -1,7 +1,7 @@
 /*
 Figshare API
 
-Figshare apiv2. Using Swagger 2.0
+Figshare apiv2. Using OpenApi 3.1.0
 
 API version: 2.0.0
 */

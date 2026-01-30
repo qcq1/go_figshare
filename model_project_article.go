@@ -1,7 +1,7 @@
 /*
 Figshare API
 
-Figshare apiv2. Using Swagger 2.0
+Figshare apiv2. Using OpenApi 3.1.0
 
 API version: 2.0.0
 */
@@ -26,15 +26,13 @@ type ProjectArticle struct {
 	// Confidentiality reason
 	ConfidentialReason string `json:"confidential_reason"`
 	// Article embargo
-	EmbargoType NullableString `json:"embargo_type"`
+	EmbargoType string `json:"embargo_type"`
 	// Article Confidentiality
 	IsConfidential bool `json:"is_confidential"`
 	// Article size
 	Size int64 `json:"size"`
 	// Article funding
 	Funding string `json:"funding"`
-	// Full Article funding information
-	FundingList []FundingInformation `json:"funding_list"`
 	// List of article tags. Keywords can be used instead
 	Tags []string `json:"tags"`
 	// List of article keywords. Tags can be used instead
@@ -52,17 +50,18 @@ type ProjectArticle struct {
 	// True if article is embargoed
 	IsEmbargoed bool `json:"is_embargoed"`
 	// Date when embargo lifts
-	EmbargoDate NullableString `json:"embargo_date"`
+	EmbargoDate string `json:"embargo_date"`
 	// True if article is published
 	IsPublic bool `json:"is_public"`
 	// Date when article was last modified
-	ModifiedDate NullableString `json:"modified_date"`
+	ModifiedDate string `json:"modified_date"`
 	// Date when article was created
 	CreatedDate string `json:"created_date"`
 	// True if any files are linked to the article
 	HasLinkedFile bool `json:"has_linked_file"`
 	// List of categories selected for the article
 	Categories []Category `json:"categories"`
+	// Article selected license
 	License License `json:"license"`
 	// Title for embargo
 	EmbargoTitle string `json:"embargo_title"`
@@ -70,8 +69,6 @@ type ProjectArticle struct {
 	EmbargoReason string `json:"embargo_reason"`
 	// List of references
 	References []string `json:"references"`
-	// List of related materials; supersedes references and resource DOI/title.
-	RelatedMaterials []RelatedMaterial `json:"related_materials,omitempty"`
 	// Unique identifier for article
 	Id int64 `json:"id"`
 	// Title of article
@@ -94,7 +91,6 @@ type ProjectArticle struct {
 	UrlPrivateApi string `json:"url_private_api"`
 	// Posted date
 	PublishedDate NullableString `json:"published_date"`
-	Timeline Timeline `json:"timeline"`
 	// Thumbnail image
 	Thumb string `json:"thumb"`
 	// Type of article identifier
@@ -113,7 +109,7 @@ type _ProjectArticle ProjectArticle
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewProjectArticle(citation string, confidentialReason string, embargoType NullableString, isConfidential bool, size int64, funding string, fundingList []FundingInformation, tags []string, keywords []string, version int64, isMetadataRecord bool, metadataReason string, status string, description string, isEmbargoed bool, embargoDate NullableString, isPublic bool, modifiedDate NullableString, createdDate string, hasLinkedFile bool, categories []Category, license License, embargoTitle string, embargoReason string, references []string, id int64, title string, doi string, handle string, groupId NullableFloat32, url string, urlPublicHtml string, urlPublicApi string, urlPrivateHtml string, urlPrivateApi string, publishedDate NullableString, timeline Timeline, thumb string, definedType int64, definedTypeName string, resourceDoi string, resourceTitle string) *ProjectArticle {
+func NewProjectArticle(citation string, confidentialReason string, embargoType string, isConfidential bool, size int64, funding string, tags []string, keywords []string, version int64, isMetadataRecord bool, metadataReason string, status string, description string, isEmbargoed bool, embargoDate string, isPublic bool, modifiedDate string, createdDate string, hasLinkedFile bool, categories []Category, license License, embargoTitle string, embargoReason string, references []string, id int64, title string, doi string, handle string, groupId NullableFloat32, url string, urlPublicHtml string, urlPublicApi string, urlPrivateHtml string, urlPrivateApi string, publishedDate NullableString, thumb string, definedType int64, definedTypeName string, resourceDoi string, resourceTitle string) *ProjectArticle {
 	this := ProjectArticle{}
 	this.Id = id
 	this.Title = title
@@ -126,7 +122,6 @@ func NewProjectArticle(citation string, confidentialReason string, embargoType N
 	this.UrlPrivateHtml = urlPrivateHtml
 	this.UrlPrivateApi = urlPrivateApi
 	this.PublishedDate = publishedDate
-	this.Timeline = timeline
 	this.Thumb = thumb
 	this.DefinedType = definedType
 	this.DefinedTypeName = definedTypeName
@@ -198,29 +193,27 @@ func (o *ProjectArticle) SetConfidentialReason(v string) {
 }
 
 // GetEmbargoType returns the EmbargoType field value
-// If the value is explicit nil, the zero value for string will be returned
 func (o *ProjectArticle) GetEmbargoType() string {
-	if o == nil || o.EmbargoType.Get() == nil {
+	if o == nil {
 		var ret string
 		return ret
 	}
 
-	return *o.EmbargoType.Get()
+	return o.EmbargoType
 }
 
 // GetEmbargoTypeOk returns a tuple with the EmbargoType field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ProjectArticle) GetEmbargoTypeOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.EmbargoType.Get(), o.EmbargoType.IsSet()
+	return &o.EmbargoType, true
 }
 
 // SetEmbargoType sets field value
 func (o *ProjectArticle) SetEmbargoType(v string) {
-	o.EmbargoType.Set(&v)
+	o.EmbargoType = v
 }
 
 // GetIsConfidential returns the IsConfidential field value
@@ -293,30 +286,6 @@ func (o *ProjectArticle) GetFundingOk() (*string, bool) {
 // SetFunding sets field value
 func (o *ProjectArticle) SetFunding(v string) {
 	o.Funding = v
-}
-
-// GetFundingList returns the FundingList field value
-func (o *ProjectArticle) GetFundingList() []FundingInformation {
-	if o == nil {
-		var ret []FundingInformation
-		return ret
-	}
-
-	return o.FundingList
-}
-
-// GetFundingListOk returns a tuple with the FundingList field value
-// and a boolean to check if the value has been set.
-func (o *ProjectArticle) GetFundingListOk() ([]FundingInformation, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.FundingList, true
-}
-
-// SetFundingList sets field value
-func (o *ProjectArticle) SetFundingList(v []FundingInformation) {
-	o.FundingList = v
 }
 
 // GetTags returns the Tags field value
@@ -512,29 +481,27 @@ func (o *ProjectArticle) SetIsEmbargoed(v bool) {
 }
 
 // GetEmbargoDate returns the EmbargoDate field value
-// If the value is explicit nil, the zero value for string will be returned
 func (o *ProjectArticle) GetEmbargoDate() string {
-	if o == nil || o.EmbargoDate.Get() == nil {
+	if o == nil {
 		var ret string
 		return ret
 	}
 
-	return *o.EmbargoDate.Get()
+	return o.EmbargoDate
 }
 
 // GetEmbargoDateOk returns a tuple with the EmbargoDate field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ProjectArticle) GetEmbargoDateOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.EmbargoDate.Get(), o.EmbargoDate.IsSet()
+	return &o.EmbargoDate, true
 }
 
 // SetEmbargoDate sets field value
 func (o *ProjectArticle) SetEmbargoDate(v string) {
-	o.EmbargoDate.Set(&v)
+	o.EmbargoDate = v
 }
 
 // GetIsPublic returns the IsPublic field value
@@ -562,29 +529,27 @@ func (o *ProjectArticle) SetIsPublic(v bool) {
 }
 
 // GetModifiedDate returns the ModifiedDate field value
-// If the value is explicit nil, the zero value for string will be returned
 func (o *ProjectArticle) GetModifiedDate() string {
-	if o == nil || o.ModifiedDate.Get() == nil {
+	if o == nil {
 		var ret string
 		return ret
 	}
 
-	return *o.ModifiedDate.Get()
+	return o.ModifiedDate
 }
 
 // GetModifiedDateOk returns a tuple with the ModifiedDate field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ProjectArticle) GetModifiedDateOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.ModifiedDate.Get(), o.ModifiedDate.IsSet()
+	return &o.ModifiedDate, true
 }
 
 // SetModifiedDate sets field value
 func (o *ProjectArticle) SetModifiedDate(v string) {
-	o.ModifiedDate.Set(&v)
+	o.ModifiedDate = v
 }
 
 // GetCreatedDate returns the CreatedDate field value
@@ -753,38 +718,6 @@ func (o *ProjectArticle) GetReferencesOk() ([]string, bool) {
 // SetReferences sets field value
 func (o *ProjectArticle) SetReferences(v []string) {
 	o.References = v
-}
-
-// GetRelatedMaterials returns the RelatedMaterials field value if set, zero value otherwise.
-func (o *ProjectArticle) GetRelatedMaterials() []RelatedMaterial {
-	if o == nil || IsNil(o.RelatedMaterials) {
-		var ret []RelatedMaterial
-		return ret
-	}
-	return o.RelatedMaterials
-}
-
-// GetRelatedMaterialsOk returns a tuple with the RelatedMaterials field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ProjectArticle) GetRelatedMaterialsOk() ([]RelatedMaterial, bool) {
-	if o == nil || IsNil(o.RelatedMaterials) {
-		return nil, false
-	}
-	return o.RelatedMaterials, true
-}
-
-// HasRelatedMaterials returns a boolean if a field has been set.
-func (o *ProjectArticle) HasRelatedMaterials() bool {
-	if o != nil && !IsNil(o.RelatedMaterials) {
-		return true
-	}
-
-	return false
-}
-
-// SetRelatedMaterials gets a reference to the given []RelatedMaterial and assigns it to the RelatedMaterials field.
-func (o *ProjectArticle) SetRelatedMaterials(v []RelatedMaterial) {
-	o.RelatedMaterials = v
 }
 
 // GetId returns the Id field value
@@ -1055,30 +988,6 @@ func (o *ProjectArticle) SetPublishedDate(v string) {
 	o.PublishedDate.Set(&v)
 }
 
-// GetTimeline returns the Timeline field value
-func (o *ProjectArticle) GetTimeline() Timeline {
-	if o == nil {
-		var ret Timeline
-		return ret
-	}
-
-	return o.Timeline
-}
-
-// GetTimelineOk returns a tuple with the Timeline field value
-// and a boolean to check if the value has been set.
-func (o *ProjectArticle) GetTimelineOk() (*Timeline, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Timeline, true
-}
-
-// SetTimeline sets field value
-func (o *ProjectArticle) SetTimeline(v Timeline) {
-	o.Timeline = v
-}
-
 // GetThumb returns the Thumb field value
 func (o *ProjectArticle) GetThumb() string {
 	if o == nil {
@@ -1211,11 +1120,10 @@ func (o ProjectArticle) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["citation"] = o.Citation
 	toSerialize["confidential_reason"] = o.ConfidentialReason
-	toSerialize["embargo_type"] = o.EmbargoType.Get()
+	toSerialize["embargo_type"] = o.EmbargoType
 	toSerialize["is_confidential"] = o.IsConfidential
 	toSerialize["size"] = o.Size
 	toSerialize["funding"] = o.Funding
-	toSerialize["funding_list"] = o.FundingList
 	toSerialize["tags"] = o.Tags
 	toSerialize["keywords"] = o.Keywords
 	toSerialize["version"] = o.Version
@@ -1224,9 +1132,9 @@ func (o ProjectArticle) ToMap() (map[string]interface{}, error) {
 	toSerialize["status"] = o.Status
 	toSerialize["description"] = o.Description
 	toSerialize["is_embargoed"] = o.IsEmbargoed
-	toSerialize["embargo_date"] = o.EmbargoDate.Get()
+	toSerialize["embargo_date"] = o.EmbargoDate
 	toSerialize["is_public"] = o.IsPublic
-	toSerialize["modified_date"] = o.ModifiedDate.Get()
+	toSerialize["modified_date"] = o.ModifiedDate
 	toSerialize["created_date"] = o.CreatedDate
 	toSerialize["has_linked_file"] = o.HasLinkedFile
 	toSerialize["categories"] = o.Categories
@@ -1234,9 +1142,6 @@ func (o ProjectArticle) ToMap() (map[string]interface{}, error) {
 	toSerialize["embargo_title"] = o.EmbargoTitle
 	toSerialize["embargo_reason"] = o.EmbargoReason
 	toSerialize["references"] = o.References
-	if !IsNil(o.RelatedMaterials) {
-		toSerialize["related_materials"] = o.RelatedMaterials
-	}
 	toSerialize["id"] = o.Id
 	toSerialize["title"] = o.Title
 	toSerialize["doi"] = o.Doi
@@ -1248,7 +1153,6 @@ func (o ProjectArticle) ToMap() (map[string]interface{}, error) {
 	toSerialize["url_private_html"] = o.UrlPrivateHtml
 	toSerialize["url_private_api"] = o.UrlPrivateApi
 	toSerialize["published_date"] = o.PublishedDate.Get()
-	toSerialize["timeline"] = o.Timeline
 	toSerialize["thumb"] = o.Thumb
 	toSerialize["defined_type"] = o.DefinedType
 	toSerialize["defined_type_name"] = o.DefinedTypeName
@@ -1268,7 +1172,6 @@ func (o *ProjectArticle) UnmarshalJSON(data []byte) (err error) {
 		"is_confidential",
 		"size",
 		"funding",
-		"funding_list",
 		"tags",
 		"keywords",
 		"version",
@@ -1298,7 +1201,6 @@ func (o *ProjectArticle) UnmarshalJSON(data []byte) (err error) {
 		"url_private_html",
 		"url_private_api",
 		"published_date",
-		"timeline",
 		"thumb",
 		"defined_type",
 		"defined_type_name",

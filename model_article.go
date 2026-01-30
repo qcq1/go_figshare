@@ -1,7 +1,7 @@
 /*
 Figshare API
 
-Figshare apiv2. Using Swagger 2.0
+Figshare apiv2. Using OpenApi 3.1.0
 
 API version: 2.0.0
 */
@@ -43,7 +43,6 @@ type Article struct {
 	UrlPrivateApi string `json:"url_private_api"`
 	// Posted date
 	PublishedDate NullableString `json:"published_date"`
-	Timeline Timeline `json:"timeline"`
 	// Thumbnail image
 	Thumb string `json:"thumb"`
 	// Type of article identifier
@@ -66,7 +65,7 @@ type _Article Article
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewArticle(id int64, title string, doi string, handle string, groupId NullableFloat32, url string, urlPublicHtml string, urlPublicApi string, urlPrivateHtml string, urlPrivateApi string, publishedDate NullableString, timeline Timeline, thumb string, definedType int64, definedTypeName string, resourceDoi string, resourceTitle string, createdDate string, modifiedDate NullableString) *Article {
+func NewArticle(id int64, title string, doi string, handle string, groupId NullableFloat32, url string, urlPublicHtml string, urlPublicApi string, urlPrivateHtml string, urlPrivateApi string, publishedDate NullableString, thumb string, definedType int64, definedTypeName string, resourceDoi string, resourceTitle string, createdDate string, modifiedDate NullableString) *Article {
 	this := Article{}
 	this.Id = id
 	this.Title = title
@@ -79,7 +78,6 @@ func NewArticle(id int64, title string, doi string, handle string, groupId Nulla
 	this.UrlPrivateHtml = urlPrivateHtml
 	this.UrlPrivateApi = urlPrivateApi
 	this.PublishedDate = publishedDate
-	this.Timeline = timeline
 	this.Thumb = thumb
 	this.DefinedType = definedType
 	this.DefinedTypeName = definedTypeName
@@ -370,30 +368,6 @@ func (o *Article) SetPublishedDate(v string) {
 	o.PublishedDate.Set(&v)
 }
 
-// GetTimeline returns the Timeline field value
-func (o *Article) GetTimeline() Timeline {
-	if o == nil {
-		var ret Timeline
-		return ret
-	}
-
-	return o.Timeline
-}
-
-// GetTimelineOk returns a tuple with the Timeline field value
-// and a boolean to check if the value has been set.
-func (o *Article) GetTimelineOk() (*Timeline, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Timeline, true
-}
-
-// SetTimeline sets field value
-func (o *Article) SetTimeline(v Timeline) {
-	o.Timeline = v
-}
-
 // GetThumb returns the Thumb field value
 func (o *Article) GetThumb() string {
 	if o == nil {
@@ -585,7 +559,6 @@ func (o Article) ToMap() (map[string]interface{}, error) {
 	toSerialize["url_private_html"] = o.UrlPrivateHtml
 	toSerialize["url_private_api"] = o.UrlPrivateApi
 	toSerialize["published_date"] = o.PublishedDate.Get()
-	toSerialize["timeline"] = o.Timeline
 	toSerialize["thumb"] = o.Thumb
 	toSerialize["defined_type"] = o.DefinedType
 	toSerialize["defined_type_name"] = o.DefinedTypeName
@@ -612,7 +585,6 @@ func (o *Article) UnmarshalJSON(data []byte) (err error) {
 		"url_private_html",
 		"url_private_api",
 		"published_date",
-		"timeline",
 		"thumb",
 		"defined_type",
 		"defined_type_name",

@@ -6,11 +6,10 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Citation** | **string** | Article citation | 
 **ConfidentialReason** | **string** | Confidentiality reason | 
-**EmbargoType** | **NullableString** | Article embargo | 
+**EmbargoType** | **string** | Article embargo | 
 **IsConfidential** | **bool** | Article Confidentiality | 
 **Size** | **int64** | Article size | 
 **Funding** | **string** | Article funding | 
-**FundingList** | [**[]FundingInformation**](FundingInformation.md) | Full Article funding information | 
 **Tags** | **[]string** | List of article tags. Keywords can be used instead | 
 **Keywords** | **[]string** | List of article keywords. Tags can be used instead | 
 **Version** | **int64** | Article version | 
@@ -19,17 +18,16 @@ Name | Type | Description | Notes
 **Status** | **string** | Article status | 
 **Description** | **string** | Article description | 
 **IsEmbargoed** | **bool** | True if article is embargoed | 
-**EmbargoDate** | **NullableString** | Date when embargo lifts | 
+**EmbargoDate** | **string** | Date when embargo lifts | 
 **IsPublic** | **bool** | True if article is published | 
-**ModifiedDate** | **NullableString** | Date when article was last modified | 
+**ModifiedDate** | **string** | Date when article was last modified | 
 **CreatedDate** | **string** | Date when article was created | 
 **HasLinkedFile** | **bool** | True if any files are linked to the article | 
 **Categories** | [**[]Category**](Category.md) | List of categories selected for the article | 
-**License** | [**License**](License.md) |  | 
+**License** | [**License**](License.md) | Article selected license | 
 **EmbargoTitle** | **string** | Title for embargo | 
 **EmbargoReason** | **string** | Reason for embargo | 
 **References** | **[]string** | List of references | 
-**RelatedMaterials** | Pointer to [**[]RelatedMaterial**](RelatedMaterial.md) | List of related materials; supersedes references and resource DOI/title. | [optional] 
 **Id** | **int64** | Unique identifier for article | 
 **Title** | **string** | Title of article | 
 **Doi** | **string** | DOI | 
@@ -41,7 +39,6 @@ Name | Type | Description | Notes
 **UrlPrivateHtml** | **string** | Private site endpoint for article | 
 **UrlPrivateApi** | **string** | Private Api endpoint for article | 
 **PublishedDate** | **NullableString** | Posted date | 
-**Timeline** | [**Timeline**](Timeline.md) |  | 
 **Thumb** | **string** | Thumbnail image | 
 **DefinedType** | **int64** | Type of article identifier | 
 **DefinedTypeName** | **string** | Name of the article type identifier | 
@@ -52,7 +49,7 @@ Name | Type | Description | Notes
 
 ### NewProjectArticle
 
-`func NewProjectArticle(citation string, confidentialReason string, embargoType NullableString, isConfidential bool, size int64, funding string, fundingList []FundingInformation, tags []string, keywords []string, version int64, isMetadataRecord bool, metadataReason string, status string, description string, isEmbargoed bool, embargoDate NullableString, isPublic bool, modifiedDate NullableString, createdDate string, hasLinkedFile bool, categories []Category, license License, embargoTitle string, embargoReason string, references []string, id int64, title string, doi string, handle string, groupId NullableFloat32, url string, urlPublicHtml string, urlPublicApi string, urlPrivateHtml string, urlPrivateApi string, publishedDate NullableString, timeline Timeline, thumb string, definedType int64, definedTypeName string, resourceDoi string, resourceTitle string, ) *ProjectArticle`
+`func NewProjectArticle(citation string, confidentialReason string, embargoType string, isConfidential bool, size int64, funding string, tags []string, keywords []string, version int64, isMetadataRecord bool, metadataReason string, status string, description string, isEmbargoed bool, embargoDate string, isPublic bool, modifiedDate string, createdDate string, hasLinkedFile bool, categories []Category, license License, embargoTitle string, embargoReason string, references []string, id int64, title string, doi string, handle string, groupId NullableFloat32, url string, urlPublicHtml string, urlPublicApi string, urlPrivateHtml string, urlPrivateApi string, publishedDate NullableString, thumb string, definedType int64, definedTypeName string, resourceDoi string, resourceTitle string, ) *ProjectArticle`
 
 NewProjectArticle instantiates a new ProjectArticle object
 This constructor will assign default values to properties that have it defined,
@@ -127,16 +124,6 @@ and a boolean to check if the value has been set.
 SetEmbargoType sets EmbargoType field to given value.
 
 
-### SetEmbargoTypeNil
-
-`func (o *ProjectArticle) SetEmbargoTypeNil(b bool)`
-
- SetEmbargoTypeNil sets the value for EmbargoType to be an explicit nil
-
-### UnsetEmbargoType
-`func (o *ProjectArticle) UnsetEmbargoType()`
-
-UnsetEmbargoType ensures that no value is present for EmbargoType, not even an explicit nil
 ### GetIsConfidential
 
 `func (o *ProjectArticle) GetIsConfidential() bool`
@@ -195,26 +182,6 @@ and a boolean to check if the value has been set.
 `func (o *ProjectArticle) SetFunding(v string)`
 
 SetFunding sets Funding field to given value.
-
-
-### GetFundingList
-
-`func (o *ProjectArticle) GetFundingList() []FundingInformation`
-
-GetFundingList returns the FundingList field if non-nil, zero value otherwise.
-
-### GetFundingListOk
-
-`func (o *ProjectArticle) GetFundingListOk() (*[]FundingInformation, bool)`
-
-GetFundingListOk returns a tuple with the FundingList field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetFundingList
-
-`func (o *ProjectArticle) SetFundingList(v []FundingInformation)`
-
-SetFundingList sets FundingList field to given value.
 
 
 ### GetTags
@@ -397,16 +364,6 @@ and a boolean to check if the value has been set.
 SetEmbargoDate sets EmbargoDate field to given value.
 
 
-### SetEmbargoDateNil
-
-`func (o *ProjectArticle) SetEmbargoDateNil(b bool)`
-
- SetEmbargoDateNil sets the value for EmbargoDate to be an explicit nil
-
-### UnsetEmbargoDate
-`func (o *ProjectArticle) UnsetEmbargoDate()`
-
-UnsetEmbargoDate ensures that no value is present for EmbargoDate, not even an explicit nil
 ### GetIsPublic
 
 `func (o *ProjectArticle) GetIsPublic() bool`
@@ -447,16 +404,6 @@ and a boolean to check if the value has been set.
 SetModifiedDate sets ModifiedDate field to given value.
 
 
-### SetModifiedDateNil
-
-`func (o *ProjectArticle) SetModifiedDateNil(b bool)`
-
- SetModifiedDateNil sets the value for ModifiedDate to be an explicit nil
-
-### UnsetModifiedDate
-`func (o *ProjectArticle) UnsetModifiedDate()`
-
-UnsetModifiedDate ensures that no value is present for ModifiedDate, not even an explicit nil
 ### GetCreatedDate
 
 `func (o *ProjectArticle) GetCreatedDate() string`
@@ -596,31 +543,6 @@ and a boolean to check if the value has been set.
 
 SetReferences sets References field to given value.
 
-
-### GetRelatedMaterials
-
-`func (o *ProjectArticle) GetRelatedMaterials() []RelatedMaterial`
-
-GetRelatedMaterials returns the RelatedMaterials field if non-nil, zero value otherwise.
-
-### GetRelatedMaterialsOk
-
-`func (o *ProjectArticle) GetRelatedMaterialsOk() (*[]RelatedMaterial, bool)`
-
-GetRelatedMaterialsOk returns a tuple with the RelatedMaterials field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetRelatedMaterials
-
-`func (o *ProjectArticle) SetRelatedMaterials(v []RelatedMaterial)`
-
-SetRelatedMaterials sets RelatedMaterials field to given value.
-
-### HasRelatedMaterials
-
-`func (o *ProjectArticle) HasRelatedMaterials() bool`
-
-HasRelatedMaterials returns a boolean if a field has been set.
 
 ### GetId
 
@@ -862,26 +784,6 @@ SetPublishedDate sets PublishedDate field to given value.
 `func (o *ProjectArticle) UnsetPublishedDate()`
 
 UnsetPublishedDate ensures that no value is present for PublishedDate, not even an explicit nil
-### GetTimeline
-
-`func (o *ProjectArticle) GetTimeline() Timeline`
-
-GetTimeline returns the Timeline field if non-nil, zero value otherwise.
-
-### GetTimelineOk
-
-`func (o *ProjectArticle) GetTimelineOk() (*Timeline, bool)`
-
-GetTimelineOk returns a tuple with the Timeline field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetTimeline
-
-`func (o *ProjectArticle) SetTimeline(v Timeline)`
-
-SetTimeline sets Timeline field to given value.
-
-
 ### GetThumb
 
 `func (o *ProjectArticle) GetThumb() string`

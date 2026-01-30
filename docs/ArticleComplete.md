@@ -6,18 +6,13 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **FigshareUrl** | **string** | Article public url | 
 **DownloadDisabled** | **bool** | If true, downloading of files for this article is disabled | 
-**Files** | [**[]PublicFile**](PublicFile.md) | List of article files. | 
 **FolderStructure** | **map[string]interface{}** | Mapping of file ids to folder paths, if folders are used | 
-**Authors** | [**[]Author**](Author.md) | List of article authors | 
-**CustomFields** | [**[]CustomArticleField**](CustomArticleField.md) | List of custom fields values | 
-**EmbargoOptions** | [**[]GroupEmbargoOptions**](GroupEmbargoOptions.md) | List of embargo options | 
 **Citation** | **string** | Article citation | 
 **ConfidentialReason** | **string** | Confidentiality reason | 
-**EmbargoType** | **NullableString** | Article embargo | 
+**EmbargoType** | **string** | Article embargo | 
 **IsConfidential** | **bool** | Article Confidentiality | 
 **Size** | **int64** | Article size | 
 **Funding** | **string** | Article funding | 
-**FundingList** | [**[]FundingInformation**](FundingInformation.md) | Full Article funding information | 
 **Tags** | **[]string** | List of article tags. Keywords can be used instead | 
 **Keywords** | **[]string** | List of article keywords. Tags can be used instead | 
 **Version** | **int64** | Article version | 
@@ -26,17 +21,16 @@ Name | Type | Description | Notes
 **Status** | **string** | Article status | 
 **Description** | **string** | Article description | 
 **IsEmbargoed** | **bool** | True if article is embargoed | 
-**EmbargoDate** | **NullableString** | Date when embargo lifts | 
+**EmbargoDate** | **string** | Date when embargo lifts | 
 **IsPublic** | **bool** | True if article is published | 
 **ModifiedDate** | **NullableString** | Date when article was last modified | 
 **CreatedDate** | **string** | Date when article was created | 
 **HasLinkedFile** | **bool** | True if any files are linked to the article | 
 **Categories** | [**[]Category**](Category.md) | List of categories selected for the article | 
-**License** | [**License**](License.md) |  | 
+**License** | [**License**](License.md) | Article selected license | 
 **EmbargoTitle** | **string** | Title for embargo | 
 **EmbargoReason** | **string** | Reason for embargo | 
 **References** | **[]string** | List of references | 
-**RelatedMaterials** | Pointer to [**[]RelatedMaterial**](RelatedMaterial.md) | List of related materials; supersedes references and resource DOI/title. | [optional] 
 **Id** | **int64** | Unique identifier for article | 
 **Title** | **string** | Title of article | 
 **Doi** | **string** | DOI | 
@@ -48,7 +42,6 @@ Name | Type | Description | Notes
 **UrlPrivateHtml** | **string** | Private site endpoint for article | 
 **UrlPrivateApi** | **string** | Private Api endpoint for article | 
 **PublishedDate** | **NullableString** | Posted date | 
-**Timeline** | [**Timeline**](Timeline.md) |  | 
 **Thumb** | **string** | Thumbnail image | 
 **DefinedType** | **int64** | Type of article identifier | 
 **DefinedTypeName** | **string** | Name of the article type identifier | 
@@ -59,7 +52,7 @@ Name | Type | Description | Notes
 
 ### NewArticleComplete
 
-`func NewArticleComplete(figshareUrl string, downloadDisabled bool, files []PublicFile, folderStructure map[string]interface{}, authors []Author, customFields []CustomArticleField, embargoOptions []GroupEmbargoOptions, citation string, confidentialReason string, embargoType NullableString, isConfidential bool, size int64, funding string, fundingList []FundingInformation, tags []string, keywords []string, version int64, isMetadataRecord bool, metadataReason string, status string, description string, isEmbargoed bool, embargoDate NullableString, isPublic bool, modifiedDate NullableString, createdDate string, hasLinkedFile bool, categories []Category, license License, embargoTitle string, embargoReason string, references []string, id int64, title string, doi string, handle string, groupId NullableFloat32, url string, urlPublicHtml string, urlPublicApi string, urlPrivateHtml string, urlPrivateApi string, publishedDate NullableString, timeline Timeline, thumb string, definedType int64, definedTypeName string, resourceDoi string, resourceTitle string, ) *ArticleComplete`
+`func NewArticleComplete(figshareUrl string, downloadDisabled bool, folderStructure map[string]interface{}, citation string, confidentialReason string, embargoType string, isConfidential bool, size int64, funding string, tags []string, keywords []string, version int64, isMetadataRecord bool, metadataReason string, status string, description string, isEmbargoed bool, embargoDate string, isPublic bool, modifiedDate NullableString, createdDate string, hasLinkedFile bool, categories []Category, license License, embargoTitle string, embargoReason string, references []string, id int64, title string, doi string, handle string, groupId NullableFloat32, url string, urlPublicHtml string, urlPublicApi string, urlPrivateHtml string, urlPrivateApi string, publishedDate NullableString, thumb string, definedType int64, definedTypeName string, resourceDoi string, resourceTitle string, ) *ArticleComplete`
 
 NewArticleComplete instantiates a new ArticleComplete object
 This constructor will assign default values to properties that have it defined,
@@ -114,26 +107,6 @@ and a boolean to check if the value has been set.
 SetDownloadDisabled sets DownloadDisabled field to given value.
 
 
-### GetFiles
-
-`func (o *ArticleComplete) GetFiles() []PublicFile`
-
-GetFiles returns the Files field if non-nil, zero value otherwise.
-
-### GetFilesOk
-
-`func (o *ArticleComplete) GetFilesOk() (*[]PublicFile, bool)`
-
-GetFilesOk returns a tuple with the Files field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetFiles
-
-`func (o *ArticleComplete) SetFiles(v []PublicFile)`
-
-SetFiles sets Files field to given value.
-
-
 ### GetFolderStructure
 
 `func (o *ArticleComplete) GetFolderStructure() map[string]interface{}`
@@ -152,66 +125,6 @@ and a boolean to check if the value has been set.
 `func (o *ArticleComplete) SetFolderStructure(v map[string]interface{})`
 
 SetFolderStructure sets FolderStructure field to given value.
-
-
-### GetAuthors
-
-`func (o *ArticleComplete) GetAuthors() []Author`
-
-GetAuthors returns the Authors field if non-nil, zero value otherwise.
-
-### GetAuthorsOk
-
-`func (o *ArticleComplete) GetAuthorsOk() (*[]Author, bool)`
-
-GetAuthorsOk returns a tuple with the Authors field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetAuthors
-
-`func (o *ArticleComplete) SetAuthors(v []Author)`
-
-SetAuthors sets Authors field to given value.
-
-
-### GetCustomFields
-
-`func (o *ArticleComplete) GetCustomFields() []CustomArticleField`
-
-GetCustomFields returns the CustomFields field if non-nil, zero value otherwise.
-
-### GetCustomFieldsOk
-
-`func (o *ArticleComplete) GetCustomFieldsOk() (*[]CustomArticleField, bool)`
-
-GetCustomFieldsOk returns a tuple with the CustomFields field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetCustomFields
-
-`func (o *ArticleComplete) SetCustomFields(v []CustomArticleField)`
-
-SetCustomFields sets CustomFields field to given value.
-
-
-### GetEmbargoOptions
-
-`func (o *ArticleComplete) GetEmbargoOptions() []GroupEmbargoOptions`
-
-GetEmbargoOptions returns the EmbargoOptions field if non-nil, zero value otherwise.
-
-### GetEmbargoOptionsOk
-
-`func (o *ArticleComplete) GetEmbargoOptionsOk() (*[]GroupEmbargoOptions, bool)`
-
-GetEmbargoOptionsOk returns a tuple with the EmbargoOptions field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetEmbargoOptions
-
-`func (o *ArticleComplete) SetEmbargoOptions(v []GroupEmbargoOptions)`
-
-SetEmbargoOptions sets EmbargoOptions field to given value.
 
 
 ### GetCitation
@@ -274,16 +187,6 @@ and a boolean to check if the value has been set.
 SetEmbargoType sets EmbargoType field to given value.
 
 
-### SetEmbargoTypeNil
-
-`func (o *ArticleComplete) SetEmbargoTypeNil(b bool)`
-
- SetEmbargoTypeNil sets the value for EmbargoType to be an explicit nil
-
-### UnsetEmbargoType
-`func (o *ArticleComplete) UnsetEmbargoType()`
-
-UnsetEmbargoType ensures that no value is present for EmbargoType, not even an explicit nil
 ### GetIsConfidential
 
 `func (o *ArticleComplete) GetIsConfidential() bool`
@@ -342,26 +245,6 @@ and a boolean to check if the value has been set.
 `func (o *ArticleComplete) SetFunding(v string)`
 
 SetFunding sets Funding field to given value.
-
-
-### GetFundingList
-
-`func (o *ArticleComplete) GetFundingList() []FundingInformation`
-
-GetFundingList returns the FundingList field if non-nil, zero value otherwise.
-
-### GetFundingListOk
-
-`func (o *ArticleComplete) GetFundingListOk() (*[]FundingInformation, bool)`
-
-GetFundingListOk returns a tuple with the FundingList field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetFundingList
-
-`func (o *ArticleComplete) SetFundingList(v []FundingInformation)`
-
-SetFundingList sets FundingList field to given value.
 
 
 ### GetTags
@@ -544,16 +427,6 @@ and a boolean to check if the value has been set.
 SetEmbargoDate sets EmbargoDate field to given value.
 
 
-### SetEmbargoDateNil
-
-`func (o *ArticleComplete) SetEmbargoDateNil(b bool)`
-
- SetEmbargoDateNil sets the value for EmbargoDate to be an explicit nil
-
-### UnsetEmbargoDate
-`func (o *ArticleComplete) UnsetEmbargoDate()`
-
-UnsetEmbargoDate ensures that no value is present for EmbargoDate, not even an explicit nil
 ### GetIsPublic
 
 `func (o *ArticleComplete) GetIsPublic() bool`
@@ -743,31 +616,6 @@ and a boolean to check if the value has been set.
 
 SetReferences sets References field to given value.
 
-
-### GetRelatedMaterials
-
-`func (o *ArticleComplete) GetRelatedMaterials() []RelatedMaterial`
-
-GetRelatedMaterials returns the RelatedMaterials field if non-nil, zero value otherwise.
-
-### GetRelatedMaterialsOk
-
-`func (o *ArticleComplete) GetRelatedMaterialsOk() (*[]RelatedMaterial, bool)`
-
-GetRelatedMaterialsOk returns a tuple with the RelatedMaterials field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetRelatedMaterials
-
-`func (o *ArticleComplete) SetRelatedMaterials(v []RelatedMaterial)`
-
-SetRelatedMaterials sets RelatedMaterials field to given value.
-
-### HasRelatedMaterials
-
-`func (o *ArticleComplete) HasRelatedMaterials() bool`
-
-HasRelatedMaterials returns a boolean if a field has been set.
 
 ### GetId
 
@@ -1009,26 +857,6 @@ SetPublishedDate sets PublishedDate field to given value.
 `func (o *ArticleComplete) UnsetPublishedDate()`
 
 UnsetPublishedDate ensures that no value is present for PublishedDate, not even an explicit nil
-### GetTimeline
-
-`func (o *ArticleComplete) GetTimeline() Timeline`
-
-GetTimeline returns the Timeline field if non-nil, zero value otherwise.
-
-### GetTimelineOk
-
-`func (o *ArticleComplete) GetTimelineOk() (*Timeline, bool)`
-
-GetTimelineOk returns a tuple with the Timeline field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetTimeline
-
-`func (o *ArticleComplete) SetTimeline(v Timeline)`
-
-SetTimeline sets Timeline field to given value.
-
-
 ### GetThumb
 
 `func (o *ArticleComplete) GetThumb() string`

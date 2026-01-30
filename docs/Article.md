@@ -15,7 +15,6 @@ Name | Type | Description | Notes
 **UrlPrivateHtml** | **string** | Private site endpoint for article | 
 **UrlPrivateApi** | **string** | Private Api endpoint for article | 
 **PublishedDate** | **NullableString** | Posted date | 
-**Timeline** | [**Timeline**](Timeline.md) |  | 
 **Thumb** | **string** | Thumbnail image | 
 **DefinedType** | **int64** | Type of article identifier | 
 **DefinedTypeName** | **string** | Name of the article type identifier | 
@@ -28,7 +27,7 @@ Name | Type | Description | Notes
 
 ### NewArticle
 
-`func NewArticle(id int64, title string, doi string, handle string, groupId NullableFloat32, url string, urlPublicHtml string, urlPublicApi string, urlPrivateHtml string, urlPrivateApi string, publishedDate NullableString, timeline Timeline, thumb string, definedType int64, definedTypeName string, resourceDoi string, resourceTitle string, createdDate string, modifiedDate NullableString, ) *Article`
+`func NewArticle(id int64, title string, doi string, handle string, groupId NullableFloat32, url string, urlPublicHtml string, urlPublicApi string, urlPrivateHtml string, urlPrivateApi string, publishedDate NullableString, thumb string, definedType int64, definedTypeName string, resourceDoi string, resourceTitle string, createdDate string, modifiedDate NullableString, ) *Article`
 
 NewArticle instantiates a new Article object
 This constructor will assign default values to properties that have it defined,
@@ -283,26 +282,6 @@ SetPublishedDate sets PublishedDate field to given value.
 `func (o *Article) UnsetPublishedDate()`
 
 UnsetPublishedDate ensures that no value is present for PublishedDate, not even an explicit nil
-### GetTimeline
-
-`func (o *Article) GetTimeline() Timeline`
-
-GetTimeline returns the Timeline field if non-nil, zero value otherwise.
-
-### GetTimelineOk
-
-`func (o *Article) GetTimelineOk() (*Timeline, bool)`
-
-GetTimelineOk returns a tuple with the Timeline field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetTimeline
-
-`func (o *Article) SetTimeline(v Timeline)`
-
-SetTimeline sets Timeline field to given value.
-
-
 ### GetThumb
 
 `func (o *Article) GetThumb() string`
