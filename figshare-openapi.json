@@ -204,7 +204,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/Article" 
+                    "$ref": "#/components/schemas/Article"
                   }
                 }
               }
@@ -491,7 +491,6 @@
           "url_private_html",
           "url_private_api",
           "published_date",
-          "timeline",
           "thumb",
           "defined_type",
           "defined_type_name"
@@ -705,7 +704,6 @@
           "url_private_html",
           "url_private_api",
           "published_date",
-          "timeline",
           "thumb",
           "defined_type",
           "defined_type_name",

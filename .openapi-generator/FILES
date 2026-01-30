@@ -13,8 +13,6 @@ docs/License.md
 docs/ProjectArticle.md
 docs/TotalArticle.md
 git_push.sh
-go.mod
-go.sum
 model_article.go
 model_article_complete.go
 model_category.go
