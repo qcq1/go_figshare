@@ -13,6 +13,7 @@ package go_figshare
 import (
 	"bytes"
 	"context"
+	"fmt"
 	"io"
 	"net/http"
 	"net/url"
@@ -620,6 +621,7 @@ func (a *ArticlesAPIService) GetAggregatedCitationsExecute(r ApiGetAggregatedCit
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
+	fmt.Printf("req: %v", req)
 
 	localVarHTTPResponse, err := a.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
