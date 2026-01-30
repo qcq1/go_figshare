@@ -349,6 +349,13 @@
             }
           },
           {
+            "name": "np",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
             "name": "Cookie",
             "in": "header",
             "description": "必须包含 session 和 uber_auth_tkt",

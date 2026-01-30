@@ -247,7 +247,7 @@ No authorization required
 
 ## GetAggregatedCitations
 
-> AggregatedCitations GetAggregatedCitations(ctx).AndSubsetFigshareDoi(andSubsetFigshareDoi).Cookie(cookie).XCsrfToken(xCsrfToken).VizStaggr(vizStaggr).UserAgent(userAgent).Referer(referer).Execute()
+> AggregatedCitations GetAggregatedCitations(ctx).AndSubsetFigshareDoi(andSubsetFigshareDoi).Cookie(cookie).XCsrfToken(xCsrfToken).VizStaggr(vizStaggr).Np(np).UserAgent(userAgent).Referer(referer).Execute()
 
 Get article aggregated citations
 
@@ -270,12 +270,13 @@ func main() {
 	cookie := "cookie_example" // string | 必须包含 session 和 uber_auth_tkt
 	xCsrfToken := "xCsrfToken_example" // string | 
 	vizStaggr := "vizStaggr_example" // string |  (optional)
+	np := "np_example" // string |  (optional)
 	userAgent := "userAgent_example" // string |  (optional)
 	referer := "referer_example" // string |  (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ArticlesAPI.GetAggregatedCitations(context.Background()).AndSubsetFigshareDoi(andSubsetFigshareDoi).Cookie(cookie).XCsrfToken(xCsrfToken).VizStaggr(vizStaggr).UserAgent(userAgent).Referer(referer).Execute()
+	resp, r, err := apiClient.ArticlesAPI.GetAggregatedCitations(context.Background()).AndSubsetFigshareDoi(andSubsetFigshareDoi).Cookie(cookie).XCsrfToken(xCsrfToken).VizStaggr(vizStaggr).Np(np).UserAgent(userAgent).Referer(referer).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `ArticlesAPI.GetAggregatedCitations``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -300,6 +301,7 @@ Name | Type | Description  | Notes
  **cookie** | **string** | 必须包含 session 和 uber_auth_tkt | 
  **xCsrfToken** | **string** |  | 
  **vizStaggr** | **string** |  | 
+ **np** | **string** |  | 
  **userAgent** | **string** |  | 
  **referer** | **string** |  | 
 

@@ -291,6 +291,13 @@ paths:
         schema:
           type: string
         style: form
+      - explode: true
+        in: query
+        name: np
+        required: false
+        schema:
+          type: string
+        style: form
       - description: 必须包含 session 和 uber_auth_tkt
         explode: false
         in: header
