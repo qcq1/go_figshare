@@ -18,6 +18,8 @@ import (
 	"net/http"
 	"net/url"
 	"strings"
+
+	"github.com/moul/http2curl"
 )
 
 
@@ -620,6 +622,12 @@ func (a *ArticlesAPIService) GetAggregatedCitationsExecute(r ApiGetAggregatedCit
 	}
 
 	fmt.Printf("req: %v", req)
+	command, err := http2curl.GetCurlCommand(req)
+	if err == nil {
+		fmt.Println("\n--- Generated Curl Command ---")
+		fmt.Println(command)
+		fmt.Println("------------------------------\n")
+	}
 	localVarHTTPResponse, err := a.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
 		return localVarReturnValue, localVarHTTPResponse, err
