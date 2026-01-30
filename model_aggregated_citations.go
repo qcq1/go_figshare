@@ -19,6 +19,7 @@ var _ MappedNullable = &AggregatedCitations{}
 
 // AggregatedCitations struct for AggregatedCitations
 type AggregatedCitations struct {
+	Navigation *AggregatedCitationsNavigation `json:"navigation,omitempty"`
 	Results []AggregatedCitationsResultsInner `json:"results,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
@@ -40,6 +41,38 @@ func NewAggregatedCitations() *AggregatedCitations {
 func NewAggregatedCitationsWithDefaults() *AggregatedCitations {
 	this := AggregatedCitations{}
 	return &this
+}
+
+// GetNavigation returns the Navigation field value if set, zero value otherwise.
+func (o *AggregatedCitations) GetNavigation() AggregatedCitationsNavigation {
+	if o == nil || IsNil(o.Navigation) {
+		var ret AggregatedCitationsNavigation
+		return ret
+	}
+	return *o.Navigation
+}
+
+// GetNavigationOk returns a tuple with the Navigation field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AggregatedCitations) GetNavigationOk() (*AggregatedCitationsNavigation, bool) {
+	if o == nil || IsNil(o.Navigation) {
+		return nil, false
+	}
+	return o.Navigation, true
+}
+
+// HasNavigation returns a boolean if a field has been set.
+func (o *AggregatedCitations) HasNavigation() bool {
+	if o != nil && !IsNil(o.Navigation) {
+		return true
+	}
+
+	return false
+}
+
+// SetNavigation gets a reference to the given AggregatedCitationsNavigation and assigns it to the Navigation field.
+func (o *AggregatedCitations) SetNavigation(v AggregatedCitationsNavigation) {
+	o.Navigation = &v
 }
 
 // GetResults returns the Results field value if set, zero value otherwise.
@@ -84,6 +117,9 @@ func (o AggregatedCitations) MarshalJSON() ([]byte, error) {
 
 func (o AggregatedCitations) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Navigation) {
+		toSerialize["navigation"] = o.Navigation
+	}
 	if !IsNil(o.Results) {
 		toSerialize["results"] = o.Results
 	}
@@ -109,6 +145,7 @@ func (o *AggregatedCitations) UnmarshalJSON(data []byte) (err error) {
 	additionalProperties := make(map[string]interface{})
 
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "navigation")
 		delete(additionalProperties, "results")
 		o.AdditionalProperties = additionalProperties
 	}

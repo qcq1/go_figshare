@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**Navigation** | Pointer to [**AggregatedCitationsNavigation**](AggregatedCitationsNavigation.md) |  | [optional] 
 **Results** | Pointer to [**[]AggregatedCitationsResultsInner**](AggregatedCitationsResultsInner.md) |  | [optional] 
 
 ## Methods
@@ -24,6 +25,31 @@ will change when the set of required properties is changed
 NewAggregatedCitationsWithDefaults instantiates a new AggregatedCitations object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetNavigation
+
+`func (o *AggregatedCitations) GetNavigation() AggregatedCitationsNavigation`
+
+GetNavigation returns the Navigation field if non-nil, zero value otherwise.
+
+### GetNavigationOk
+
+`func (o *AggregatedCitations) GetNavigationOk() (*AggregatedCitationsNavigation, bool)`
+
+GetNavigationOk returns a tuple with the Navigation field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetNavigation
+
+`func (o *AggregatedCitations) SetNavigation(v AggregatedCitationsNavigation)`
+
+SetNavigation sets Navigation field to given value.
+
+### HasNavigation
+
+`func (o *AggregatedCitations) HasNavigation() bool`
+
+HasNavigation returns a boolean if a field has been set.
 
 ### GetResults
 

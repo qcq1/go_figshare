@@ -697,6 +697,8 @@ components:
       x-tag: articles
     AggregatedCitations:
       example:
+        navigation:
+          data_json: data_json
         results:
         - name:
             label: label
@@ -711,11 +713,19 @@ components:
             label: 0
           id: id
       properties:
+        navigation:
+          $ref: '#/components/schemas/AggregatedCitations_navigation'
         results:
           items:
             $ref: '#/components/schemas/AggregatedCitations_results_inner'
           type: array
       x-tag: articles
+    AggregatedCitations_navigation:
+      example:
+        data_json: data_json
+      properties:
+        data_json:
+          type: string
     AggregatedCitations_results_inner_name:
       example:
         label: label

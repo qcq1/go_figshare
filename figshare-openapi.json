@@ -925,6 +925,14 @@
         "x-tag": "articles",
         "type": "object",
         "properties": {
+          "navigation": {
+            "type":"object",
+            "properties": {
+              "data_json": {
+                "type": "string"
+              }
+            }
+          },
           "results": {
             "type": "array",
             "items": {

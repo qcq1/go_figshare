@@ -87,6 +87,7 @@ Class | Method | HTTP request | Description
 ## Documentation For Models
 
  - [AggregatedCitations](docs/AggregatedCitations.md)
+ - [AggregatedCitationsNavigation](docs/AggregatedCitationsNavigation.md)
  - [AggregatedCitationsResultsInner](docs/AggregatedCitationsResultsInner.md)
  - [AggregatedCitationsResultsInnerCount](docs/AggregatedCitationsResultsInnerCount.md)
  - [AggregatedCitationsResultsInnerName](docs/AggregatedCitationsResultsInnerName.md)

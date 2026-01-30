@@ -6,6 +6,7 @@ api_articles.go
 client.go
 configuration.go
 docs/AggregatedCitations.md
+docs/AggregatedCitationsNavigation.md
 docs/AggregatedCitationsResultsInner.md
 docs/AggregatedCitationsResultsInnerCount.md
 docs/AggregatedCitationsResultsInnerName.md
@@ -18,6 +19,7 @@ docs/ProjectArticle.md
 docs/TotalArticle.md
 git_push.sh
 model_aggregated_citations.go
+model_aggregated_citations_navigation.go
 model_aggregated_citations_results_inner.go
 model_aggregated_citations_results_inner_count.go
 model_aggregated_citations_results_inner_name.go
@@ -28,5 +30,4 @@ model_license.go
 model_project_article.go
 model_total_article.go
 response.go
-test/api_articles_test.go
 utils.go
