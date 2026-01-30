@@ -702,22 +702,22 @@ components:
             label: label
             sublabel: sublabel
           count:
-            label: 6
+            label: 0
           times_cited_avg:
-            label: 1.4658129805029452
-          id: 0
+            label: 6.027456183070403
+          id: id
           times_cited_sum:
-            label: 1.4658129805029452
+            label: 6.027456183070403
         - name:
             label: label
             sublabel: sublabel
           count:
-            label: 6
+            label: 0
           times_cited_avg:
-            label: 1.4658129805029452
-          id: 0
+            label: 6.027456183070403
+          id: id
           times_cited_sum:
-            label: 1.4658129805029452
+            label: 6.027456183070403
       properties:
         results:
           items:
@@ -735,14 +735,14 @@ components:
           type: string
     AggregatedCitations_results_inner_count:
       example:
-        label: 6
+        label: 0
       properties:
         label:
           format: int64
           type: integer
     AggregatedCitations_results_inner_times_cited_avg:
       example:
-        label: 1.4658129805029452
+        label: 6.027456183070403
       properties:
         label:
           format: float64
@@ -753,16 +753,15 @@ components:
           label: label
           sublabel: sublabel
         count:
-          label: 6
+          label: 0
         times_cited_avg:
-          label: 1.4658129805029452
-        id: 0
+          label: 6.027456183070403
+        id: id
         times_cited_sum:
-          label: 1.4658129805029452
+          label: 6.027456183070403
       properties:
         id:
-          format: int64
-          type: integer
+          type: string
         name:
           $ref: '#/components/schemas/AggregatedCitations_results_inner_name'
         count:

@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | Pointer to **int64** |  | [optional] 
+**Id** | Pointer to **string** |  | [optional] 
 **Name** | Pointer to [**AggregatedCitationsResultsInnerName**](AggregatedCitationsResultsInnerName.md) |  | [optional] 
 **Count** | Pointer to [**AggregatedCitationsResultsInnerCount**](AggregatedCitationsResultsInnerCount.md) |  | [optional] 
 **TimesCitedAvg** | Pointer to [**AggregatedCitationsResultsInnerTimesCitedAvg**](AggregatedCitationsResultsInnerTimesCitedAvg.md) |  | [optional] 
@@ -31,20 +31,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetId
 
-`func (o *AggregatedCitationsResultsInner) GetId() int64`
+`func (o *AggregatedCitationsResultsInner) GetId() string`
 
 GetId returns the Id field if non-nil, zero value otherwise.
 
 ### GetIdOk
 
-`func (o *AggregatedCitationsResultsInner) GetIdOk() (*int64, bool)`
+`func (o *AggregatedCitationsResultsInner) GetIdOk() (*string, bool)`
 
 GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetId
 
-`func (o *AggregatedCitationsResultsInner) SetId(v int64)`
+`func (o *AggregatedCitationsResultsInner) SetId(v string)`
 
 SetId sets Id field to given value.
 

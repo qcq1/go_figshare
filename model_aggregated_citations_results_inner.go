@@ -19,7 +19,7 @@ var _ MappedNullable = &AggregatedCitationsResultsInner{}
 
 // AggregatedCitationsResultsInner struct for AggregatedCitationsResultsInner
 type AggregatedCitationsResultsInner struct {
-	Id *int64 `json:"id,omitempty"`
+	Id *string `json:"id,omitempty"`
 	Name *AggregatedCitationsResultsInnerName `json:"name,omitempty"`
 	Count *AggregatedCitationsResultsInnerCount `json:"count,omitempty"`
 	TimesCitedAvg *AggregatedCitationsResultsInnerTimesCitedAvg `json:"times_cited_avg,omitempty"`
@@ -47,9 +47,9 @@ func NewAggregatedCitationsResultsInnerWithDefaults() *AggregatedCitationsResult
 }
 
 // GetId returns the Id field value if set, zero value otherwise.
-func (o *AggregatedCitationsResultsInner) GetId() int64 {
+func (o *AggregatedCitationsResultsInner) GetId() string {
 	if o == nil || IsNil(o.Id) {
-		var ret int64
+		var ret string
 		return ret
 	}
 	return *o.Id
@@ -57,7 +57,7 @@ func (o *AggregatedCitationsResultsInner) GetId() int64 {
 
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AggregatedCitationsResultsInner) GetIdOk() (*int64, bool) {
+func (o *AggregatedCitationsResultsInner) GetIdOk() (*string, bool) {
 	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
@@ -73,8 +73,8 @@ func (o *AggregatedCitationsResultsInner) HasId() bool {
 	return false
 }
 
-// SetId gets a reference to the given int64 and assigns it to the Id field.
-func (o *AggregatedCitationsResultsInner) SetId(v int64) {
+// SetId gets a reference to the given string and assigns it to the Id field.
+func (o *AggregatedCitationsResultsInner) SetId(v string) {
 	o.Id = &v
 }
 
