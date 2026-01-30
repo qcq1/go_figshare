@@ -12,7 +12,6 @@ package go_figshare
 
 import (
 	"encoding/json"
-	"bytes"
 	"fmt"
 )
 
@@ -33,6 +32,7 @@ type Category struct {
 	SourceId string `json:"source_id"`
 	// Internal id of taxonomy the category is part of
 	TaxonomyId int64 `json:"taxonomy_id"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _Category Category
@@ -220,6 +220,11 @@ func (o Category) ToMap() (map[string]interface{}, error) {
 	toSerialize["path"] = o.Path
 	toSerialize["source_id"] = o.SourceId
 	toSerialize["taxonomy_id"] = o.TaxonomyId
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -252,15 +257,25 @@ func (o *Category) UnmarshalJSON(data []byte) (err error) {
 
 	varCategory := _Category{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varCategory)
+	err = json.Unmarshal(data, &varCategory)
 
 	if err != nil {
 		return err
 	}
 
 	*o = Category(varCategory)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "parent_id")
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "title")
+		delete(additionalProperties, "path")
+		delete(additionalProperties, "source_id")
+		delete(additionalProperties, "taxonomy_id")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

@@ -12,7 +12,6 @@ package go_figshare
 
 import (
 	"encoding/json"
-	"bytes"
 	"fmt"
 )
 
@@ -27,6 +26,7 @@ type License struct {
 	Name string `json:"name"`
 	// License url
 	Url string `json:"url"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _License License
@@ -136,6 +136,11 @@ func (o License) ToMap() (map[string]interface{}, error) {
 	toSerialize["value"] = o.Value
 	toSerialize["name"] = o.Name
 	toSerialize["url"] = o.Url
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -165,15 +170,22 @@ func (o *License) UnmarshalJSON(data []byte) (err error) {
 
 	varLicense := _License{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varLicense)
+	err = json.Unmarshal(data, &varLicense)
 
 	if err != nil {
 		return err
 	}
 
 	*o = License(varLicense)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "value")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "url")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

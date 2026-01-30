@@ -12,7 +12,6 @@ package go_figshare
 
 import (
 	"encoding/json"
-	"bytes"
 	"fmt"
 )
 
@@ -57,6 +56,7 @@ type Article struct {
 	CreatedDate string `json:"created_date"`
 	// Date when article was last modified
 	ModifiedDate NullableString `json:"modified_date"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _Article Article
@@ -566,6 +566,11 @@ func (o Article) ToMap() (map[string]interface{}, error) {
 	toSerialize["resource_title"] = o.ResourceTitle
 	toSerialize["created_date"] = o.CreatedDate
 	toSerialize["modified_date"] = o.ModifiedDate.Get()
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -610,15 +615,37 @@ func (o *Article) UnmarshalJSON(data []byte) (err error) {
 
 	varArticle := _Article{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varArticle)
+	err = json.Unmarshal(data, &varArticle)
 
 	if err != nil {
 		return err
 	}
 
 	*o = Article(varArticle)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "title")
+		delete(additionalProperties, "doi")
+		delete(additionalProperties, "handle")
+		delete(additionalProperties, "group_id")
+		delete(additionalProperties, "url")
+		delete(additionalProperties, "url_public_html")
+		delete(additionalProperties, "url_public_api")
+		delete(additionalProperties, "url_private_html")
+		delete(additionalProperties, "url_private_api")
+		delete(additionalProperties, "published_date")
+		delete(additionalProperties, "thumb")
+		delete(additionalProperties, "defined_type")
+		delete(additionalProperties, "defined_type_name")
+		delete(additionalProperties, "resource_doi")
+		delete(additionalProperties, "resource_title")
+		delete(additionalProperties, "created_date")
+		delete(additionalProperties, "modified_date")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

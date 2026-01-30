@@ -27,7 +27,10 @@ type TotalArticle struct {
 	Shares *int64 `json:"shares,omitempty"`
 	// cites for article
 	Cites *int64 `json:"cites,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _TotalArticle TotalArticle
 
 // NewTotalArticle instantiates a new TotalArticle object
 // This constructor will assign default values to properties that have it defined,
@@ -196,7 +199,36 @@ func (o TotalArticle) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Cites) {
 		toSerialize["cites"] = o.Cites
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *TotalArticle) UnmarshalJSON(data []byte) (err error) {
+	varTotalArticle := _TotalArticle{}
+
+	err = json.Unmarshal(data, &varTotalArticle)
+
+	if err != nil {
+		return err
+	}
+
+	*o = TotalArticle(varTotalArticle)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "downloads")
+		delete(additionalProperties, "views")
+		delete(additionalProperties, "shares")
+		delete(additionalProperties, "cites")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableTotalArticle struct {

@@ -12,7 +12,6 @@ package go_figshare
 
 import (
 	"encoding/json"
-	"bytes"
 	"fmt"
 )
 
@@ -101,6 +100,7 @@ type ProjectArticle struct {
 	ResourceDoi string `json:"resource_doi"`
 	// Deprecated by related materials. Not applicable to regular users. In a publisher case, this is the publisher article title.
 	ResourceTitle string `json:"resource_title"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _ProjectArticle ProjectArticle
@@ -1158,6 +1158,11 @@ func (o ProjectArticle) ToMap() (map[string]interface{}, error) {
 	toSerialize["defined_type_name"] = o.DefinedTypeName
 	toSerialize["resource_doi"] = o.ResourceDoi
 	toSerialize["resource_title"] = o.ResourceTitle
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -1224,15 +1229,59 @@ func (o *ProjectArticle) UnmarshalJSON(data []byte) (err error) {
 
 	varProjectArticle := _ProjectArticle{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varProjectArticle)
+	err = json.Unmarshal(data, &varProjectArticle)
 
 	if err != nil {
 		return err
 	}
 
 	*o = ProjectArticle(varProjectArticle)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "citation")
+		delete(additionalProperties, "confidential_reason")
+		delete(additionalProperties, "embargo_type")
+		delete(additionalProperties, "is_confidential")
+		delete(additionalProperties, "size")
+		delete(additionalProperties, "funding")
+		delete(additionalProperties, "tags")
+		delete(additionalProperties, "keywords")
+		delete(additionalProperties, "version")
+		delete(additionalProperties, "is_metadata_record")
+		delete(additionalProperties, "metadata_reason")
+		delete(additionalProperties, "status")
+		delete(additionalProperties, "description")
+		delete(additionalProperties, "is_embargoed")
+		delete(additionalProperties, "embargo_date")
+		delete(additionalProperties, "is_public")
+		delete(additionalProperties, "modified_date")
+		delete(additionalProperties, "created_date")
+		delete(additionalProperties, "has_linked_file")
+		delete(additionalProperties, "categories")
+		delete(additionalProperties, "license")
+		delete(additionalProperties, "embargo_title")
+		delete(additionalProperties, "embargo_reason")
+		delete(additionalProperties, "references")
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "title")
+		delete(additionalProperties, "doi")
+		delete(additionalProperties, "handle")
+		delete(additionalProperties, "group_id")
+		delete(additionalProperties, "url")
+		delete(additionalProperties, "url_public_html")
+		delete(additionalProperties, "url_public_api")
+		delete(additionalProperties, "url_private_html")
+		delete(additionalProperties, "url_private_api")
+		delete(additionalProperties, "published_date")
+		delete(additionalProperties, "thumb")
+		delete(additionalProperties, "defined_type")
+		delete(additionalProperties, "defined_type_name")
+		delete(additionalProperties, "resource_doi")
+		delete(additionalProperties, "resource_title")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }
