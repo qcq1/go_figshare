@@ -707,7 +707,7 @@ components:
             label: 1.4658129805029452
           id: 0
           times_cited_sum:
-            label: 6
+            label: 1.4658129805029452
         - name:
             label: label
             sublabel: sublabel
@@ -717,7 +717,7 @@ components:
             label: 1.4658129805029452
           id: 0
           times_cited_sum:
-            label: 6
+            label: 1.4658129805029452
       properties:
         results:
           items:
@@ -758,7 +758,7 @@ components:
           label: 1.4658129805029452
         id: 0
         times_cited_sum:
-          label: 6
+          label: 1.4658129805029452
       properties:
         id:
           format: int64
@@ -770,4 +770,4 @@ components:
         times_cited_avg:
           $ref: '#/components/schemas/AggregatedCitations_results_inner_times_cited_avg'
         times_cited_sum:
-          $ref: '#/components/schemas/AggregatedCitations_results_inner_count'
+          $ref: '#/components/schemas/AggregatedCitations_results_inner_times_cited_avg'

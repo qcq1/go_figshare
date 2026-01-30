@@ -967,8 +967,8 @@
                   "type": "object",
                   "properties": {
                     "label": {
-                      "type": "integer",
-                      "format": "int64"
+                      "type": "number",
+                      "format": "float64"
                     }
                   }
                 }

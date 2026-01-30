@@ -23,7 +23,7 @@ type AggregatedCitationsResultsInner struct {
 	Name *AggregatedCitationsResultsInnerName `json:"name,omitempty"`
 	Count *AggregatedCitationsResultsInnerCount `json:"count,omitempty"`
 	TimesCitedAvg *AggregatedCitationsResultsInnerTimesCitedAvg `json:"times_cited_avg,omitempty"`
-	TimesCitedSum *AggregatedCitationsResultsInnerCount `json:"times_cited_sum,omitempty"`
+	TimesCitedSum *AggregatedCitationsResultsInnerTimesCitedAvg `json:"times_cited_sum,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -175,9 +175,9 @@ func (o *AggregatedCitationsResultsInner) SetTimesCitedAvg(v AggregatedCitations
 }
 
 // GetTimesCitedSum returns the TimesCitedSum field value if set, zero value otherwise.
-func (o *AggregatedCitationsResultsInner) GetTimesCitedSum() AggregatedCitationsResultsInnerCount {
+func (o *AggregatedCitationsResultsInner) GetTimesCitedSum() AggregatedCitationsResultsInnerTimesCitedAvg {
 	if o == nil || IsNil(o.TimesCitedSum) {
-		var ret AggregatedCitationsResultsInnerCount
+		var ret AggregatedCitationsResultsInnerTimesCitedAvg
 		return ret
 	}
 	return *o.TimesCitedSum
@@ -185,7 +185,7 @@ func (o *AggregatedCitationsResultsInner) GetTimesCitedSum() AggregatedCitations
 
 // GetTimesCitedSumOk returns a tuple with the TimesCitedSum field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AggregatedCitationsResultsInner) GetTimesCitedSumOk() (*AggregatedCitationsResultsInnerCount, bool) {
+func (o *AggregatedCitationsResultsInner) GetTimesCitedSumOk() (*AggregatedCitationsResultsInnerTimesCitedAvg, bool) {
 	if o == nil || IsNil(o.TimesCitedSum) {
 		return nil, false
 	}
@@ -201,8 +201,8 @@ func (o *AggregatedCitationsResultsInner) HasTimesCitedSum() bool {
 	return false
 }
 
-// SetTimesCitedSum gets a reference to the given AggregatedCitationsResultsInnerCount and assigns it to the TimesCitedSum field.
-func (o *AggregatedCitationsResultsInner) SetTimesCitedSum(v AggregatedCitationsResultsInnerCount) {
+// SetTimesCitedSum gets a reference to the given AggregatedCitationsResultsInnerTimesCitedAvg and assigns it to the TimesCitedSum field.
+func (o *AggregatedCitationsResultsInner) SetTimesCitedSum(v AggregatedCitationsResultsInnerTimesCitedAvg) {
 	o.TimesCitedSum = &v
 }
 

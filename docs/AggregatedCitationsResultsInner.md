@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **Name** | Pointer to [**AggregatedCitationsResultsInnerName**](AggregatedCitationsResultsInnerName.md) |  | [optional] 
 **Count** | Pointer to [**AggregatedCitationsResultsInnerCount**](AggregatedCitationsResultsInnerCount.md) |  | [optional] 
 **TimesCitedAvg** | Pointer to [**AggregatedCitationsResultsInnerTimesCitedAvg**](AggregatedCitationsResultsInnerTimesCitedAvg.md) |  | [optional] 
-**TimesCitedSum** | Pointer to [**AggregatedCitationsResultsInnerCount**](AggregatedCitationsResultsInnerCount.md) |  | [optional] 
+**TimesCitedSum** | Pointer to [**AggregatedCitationsResultsInnerTimesCitedAvg**](AggregatedCitationsResultsInnerTimesCitedAvg.md) |  | [optional] 
 
 ## Methods
 
@@ -131,20 +131,20 @@ HasTimesCitedAvg returns a boolean if a field has been set.
 
 ### GetTimesCitedSum
 
-`func (o *AggregatedCitationsResultsInner) GetTimesCitedSum() AggregatedCitationsResultsInnerCount`
+`func (o *AggregatedCitationsResultsInner) GetTimesCitedSum() AggregatedCitationsResultsInnerTimesCitedAvg`
 
 GetTimesCitedSum returns the TimesCitedSum field if non-nil, zero value otherwise.
 
 ### GetTimesCitedSumOk
 
-`func (o *AggregatedCitationsResultsInner) GetTimesCitedSumOk() (*AggregatedCitationsResultsInnerCount, bool)`
+`func (o *AggregatedCitationsResultsInner) GetTimesCitedSumOk() (*AggregatedCitationsResultsInnerTimesCitedAvg, bool)`
 
 GetTimesCitedSumOk returns a tuple with the TimesCitedSum field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTimesCitedSum
 
-`func (o *AggregatedCitationsResultsInner) SetTimesCitedSum(v AggregatedCitationsResultsInnerCount)`
+`func (o *AggregatedCitationsResultsInner) SetTimesCitedSum(v AggregatedCitationsResultsInnerTimesCitedAvg)`
 
 SetTimesCitedSum sets TimesCitedSum field to given value.
 
