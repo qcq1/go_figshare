@@ -7,6 +7,7 @@ Method | HTTP request | Description
 [**ArticleDetails**](ArticlesAPI.md#ArticleDetails) | **Get** /articles/{article_id} | View article details
 [**ArticlesList**](ArticlesAPI.md#ArticlesList) | **Get** /articles | Public Articles
 [**CrawlTotalArticle**](ArticlesAPI.md#CrawlTotalArticle) | **Get** /total/article/{article_id} | View article total downloads, views
+[**GetAggregatedCitations**](ArticlesAPI.md#GetAggregatedCitations) | **Get** /viz/data/publication/for/aggregated-citations.json | Get article aggregated citations
 
 
 
@@ -229,6 +230,82 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**TotalArticle**](TotalArticle.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetAggregatedCitations
+
+> AggregatedCitations GetAggregatedCitations(ctx).AndSubsetFigshareDoi(andSubsetFigshareDoi).Cookie(cookie).XCsrfToken(xCsrfToken).VizStaggr(vizStaggr).UserAgent(userAgent).Referer(referer).Execute()
+
+Get article aggregated citations
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+)
+
+func main() {
+	andSubsetFigshareDoi := "andSubsetFigshareDoi_example" // string | Article DOI
+	cookie := "cookie_example" // string | 必须包含 session 和 uber_auth_tkt
+	xCsrfToken := "xCsrfToken_example" // string | 
+	vizStaggr := "vizStaggr_example" // string |  (optional) (default to "mean")
+	userAgent := "userAgent_example" // string |  (optional) (default to "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36")
+	referer := "referer_example" // string |  (optional)
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.ArticlesAPI.GetAggregatedCitations(context.Background()).AndSubsetFigshareDoi(andSubsetFigshareDoi).Cookie(cookie).XCsrfToken(xCsrfToken).VizStaggr(vizStaggr).UserAgent(userAgent).Referer(referer).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ArticlesAPI.GetAggregatedCitations``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetAggregatedCitations`: AggregatedCitations
+	fmt.Fprintf(os.Stdout, "Response from `ArticlesAPI.GetAggregatedCitations`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetAggregatedCitationsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **andSubsetFigshareDoi** | **string** | Article DOI | 
+ **cookie** | **string** | 必须包含 session 和 uber_auth_tkt | 
+ **xCsrfToken** | **string** |  | 
+ **vizStaggr** | **string** |  | [default to &quot;mean&quot;]
+ **userAgent** | **string** |  | [default to &quot;Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36&quot;]
+ **referer** | **string** |  | 
+
+### Return type
+
+[**AggregatedCitations**](AggregatedCitations.md)
 
 ### Authorization
 

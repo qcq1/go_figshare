@@ -5,6 +5,11 @@ api/openapi.yaml
 api_articles.go
 client.go
 configuration.go
+docs/AggregatedCitations.md
+docs/AggregatedCitationsResultsInner.md
+docs/AggregatedCitationsResultsInnerCount.md
+docs/AggregatedCitationsResultsInnerName.md
+docs/AggregatedCitationsResultsInnerTimesCitedAvg.md
 docs/Article.md
 docs/ArticleComplete.md
 docs/ArticlesAPI.md
@@ -13,6 +18,11 @@ docs/License.md
 docs/ProjectArticle.md
 docs/TotalArticle.md
 git_push.sh
+model_aggregated_citations.go
+model_aggregated_citations_results_inner.go
+model_aggregated_citations_results_inner_count.go
+model_aggregated_citations_results_inner_name.go
+model_aggregated_citations_results_inner_times_cited_avg.go
 model_article.go
 model_article_complete.go
 model_category.go

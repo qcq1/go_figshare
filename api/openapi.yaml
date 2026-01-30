@@ -271,6 +271,77 @@ paths:
       summary: "View article total downloads, views"
       tags:
       - articles
+  /viz/data/publication/for/aggregated-citations.json:
+    get:
+      description: Get article aggregated citations
+      operationId: get_aggregated_citations
+      parameters:
+      - description: Article DOI
+        explode: true
+        in: query
+        name: and_subset_figshare_doi
+        required: true
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: viz-st:aggr
+        required: false
+        schema:
+          default: mean
+          type: string
+        style: form
+      - description: 必须包含 session 和 uber_auth_tkt
+        explode: false
+        in: header
+        name: Cookie
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: header
+        name: x-csrf-token
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: header
+        name: User-Agent
+        required: false
+        schema:
+          default: "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36\
+            \ (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36"
+          type: string
+        style: simple
+      - explode: false
+        in: header
+        name: Referer
+        required: false
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AggregatedCitations'
+          description: OK. Article representation
+        "400":
+          description: Bad Request
+        "404":
+          description: Not Found
+        "500":
+          description: Internal Server Error
+      security: []
+      servers:
+      - url: https://app.dimensions.ai
+      summary: Get article aggregated citations
+      tags:
+      - articles
 components:
   schemas:
     Article:
@@ -627,3 +698,79 @@ components:
           format: int64
           type: integer
       x-tag: articles
+    AggregatedCitations:
+      example:
+        results:
+        - name:
+            label: label
+            sublabel: sublabel
+          count:
+            label: 6
+          times_cited_avg:
+            label: 1.4658129805029452
+          id: 0
+          times_cited_sum:
+            label: 6
+        - name:
+            label: label
+            sublabel: sublabel
+          count:
+            label: 6
+          times_cited_avg:
+            label: 1.4658129805029452
+          id: 0
+          times_cited_sum:
+            label: 6
+      properties:
+        results:
+          items:
+            $ref: '#/components/schemas/AggregatedCitations_results_inner'
+          type: array
+      x-tag: articles
+    AggregatedCitations_results_inner_name:
+      example:
+        label: label
+        sublabel: sublabel
+      properties:
+        label:
+          type: string
+        sublabel:
+          type: string
+    AggregatedCitations_results_inner_count:
+      example:
+        label: 6
+      properties:
+        label:
+          format: int64
+          type: integer
+    AggregatedCitations_results_inner_times_cited_avg:
+      example:
+        label: 1.4658129805029452
+      properties:
+        label:
+          format: float64
+          type: number
+    AggregatedCitations_results_inner:
+      example:
+        name:
+          label: label
+          sublabel: sublabel
+        count:
+          label: 6
+        times_cited_avg:
+          label: 1.4658129805029452
+        id: 0
+        times_cited_sum:
+          label: 6
+      properties:
+        id:
+          format: int64
+          type: integer
+        name:
+          $ref: '#/components/schemas/AggregatedCitations_results_inner_name'
+        count:
+          $ref: '#/components/schemas/AggregatedCitations_results_inner_count'
+        times_cited_avg:
+          $ref: '#/components/schemas/AggregatedCitations_results_inner_times_cited_avg'
+        times_cited_sum:
+          $ref: '#/components/schemas/AggregatedCitations_results_inner_count'

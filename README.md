@@ -81,10 +81,16 @@ Class | Method | HTTP request | Description
 *ArticlesAPI* | [**ArticleDetails**](docs/ArticlesAPI.md#articledetails) | **Get** /articles/{article_id} | View article details
 *ArticlesAPI* | [**ArticlesList**](docs/ArticlesAPI.md#articleslist) | **Get** /articles | Public Articles
 *ArticlesAPI* | [**CrawlTotalArticle**](docs/ArticlesAPI.md#crawltotalarticle) | **Get** /total/article/{article_id} | View article total downloads, views
+*ArticlesAPI* | [**GetAggregatedCitations**](docs/ArticlesAPI.md#getaggregatedcitations) | **Get** /viz/data/publication/for/aggregated-citations.json | Get article aggregated citations
 
 
 ## Documentation For Models
 
+ - [AggregatedCitations](docs/AggregatedCitations.md)
+ - [AggregatedCitationsResultsInner](docs/AggregatedCitationsResultsInner.md)
+ - [AggregatedCitationsResultsInnerCount](docs/AggregatedCitationsResultsInnerCount.md)
+ - [AggregatedCitationsResultsInnerName](docs/AggregatedCitationsResultsInnerName.md)
+ - [AggregatedCitationsResultsInnerTimesCitedAvg](docs/AggregatedCitationsResultsInnerTimesCitedAvg.md)
  - [Article](docs/Article.md)
  - [ArticleComplete](docs/ArticleComplete.md)
  - [Category](docs/Category.md)

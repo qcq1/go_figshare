@@ -101,6 +101,12 @@ func NewConfiguration() *Configuration {
 					Description: "No description provided",
 				},
 			},
+			"ArticlesAPIService.GetAggregatedCitations": {
+				{
+					URL: "https://app.dimensions.ai",
+					Description: "No description provided",
+				},
+			},
 		},
 	}
 	return cfg
