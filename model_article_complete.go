@@ -25,7 +25,7 @@ type ArticleComplete struct {
 	// If true, downloading of files for this article is disabled
 	DownloadDisabled bool `json:"download_disabled"`
 	// Mapping of file ids to folder paths, if folders are used
-	FolderStructure map[string]interface{} `json:"folder_structure"`
+	FolderStructure map[string]interface{} `json:"folder_structure,omitempty"`
 	// Article citation
 	Citation string `json:"citation"`
 	// Confidentiality reason
@@ -115,7 +115,7 @@ type _ArticleComplete ArticleComplete
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewArticleComplete(figshareUrl string, downloadDisabled bool, folderStructure map[string]interface{}, citation string, confidentialReason string, embargoType string, isConfidential bool, size int64, funding string, tags []string, keywords []string, version int64, isMetadataRecord bool, metadataReason string, status string, description string, isEmbargoed bool, embargoDate string, isPublic bool, modifiedDate NullableString, createdDate string, hasLinkedFile bool, categories []Category, license License, embargoTitle string, embargoReason string, references []string, id int64, title string, doi string, handle string, groupId NullableFloat32, url string, urlPublicHtml string, urlPublicApi string, urlPrivateHtml string, urlPrivateApi string, publishedDate NullableString, thumb string, definedType int64, definedTypeName string, resourceDoi string, resourceTitle string) *ArticleComplete {
+func NewArticleComplete(figshareUrl string, downloadDisabled bool, citation string, confidentialReason string, embargoType string, isConfidential bool, size int64, funding string, tags []string, keywords []string, version int64, isMetadataRecord bool, metadataReason string, status string, description string, isEmbargoed bool, embargoDate string, isPublic bool, modifiedDate NullableString, createdDate string, hasLinkedFile bool, categories []Category, license License, embargoTitle string, embargoReason string, references []string, id int64, title string, doi string, handle string, groupId NullableFloat32, url string, urlPublicHtml string, urlPublicApi string, urlPrivateHtml string, urlPrivateApi string, publishedDate NullableString, thumb string, definedType int64, definedTypeName string, resourceDoi string, resourceTitle string) *ArticleComplete {
 	this := ArticleComplete{}
 	this.Citation = citation
 	this.ConfidentialReason = confidentialReason
@@ -220,26 +220,34 @@ func (o *ArticleComplete) SetDownloadDisabled(v bool) {
 	o.DownloadDisabled = v
 }
 
-// GetFolderStructure returns the FolderStructure field value
+// GetFolderStructure returns the FolderStructure field value if set, zero value otherwise.
 func (o *ArticleComplete) GetFolderStructure() map[string]interface{} {
-	if o == nil {
+	if o == nil || IsNil(o.FolderStructure) {
 		var ret map[string]interface{}
 		return ret
 	}
-
 	return o.FolderStructure
 }
 
-// GetFolderStructureOk returns a tuple with the FolderStructure field value
+// GetFolderStructureOk returns a tuple with the FolderStructure field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ArticleComplete) GetFolderStructureOk() (map[string]interface{}, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.FolderStructure) {
 		return map[string]interface{}{}, false
 	}
 	return o.FolderStructure, true
 }
 
-// SetFolderStructure sets field value
+// HasFolderStructure returns a boolean if a field has been set.
+func (o *ArticleComplete) HasFolderStructure() bool {
+	if o != nil && !IsNil(o.FolderStructure) {
+		return true
+	}
+
+	return false
+}
+
+// SetFolderStructure gets a reference to the given map[string]interface{} and assigns it to the FolderStructure field.
 func (o *ArticleComplete) SetFolderStructure(v map[string]interface{}) {
 	o.FolderStructure = v
 }
@@ -1222,7 +1230,9 @@ func (o ArticleComplete) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["figshare_url"] = o.FigshareUrl
 	toSerialize["download_disabled"] = o.DownloadDisabled
-	toSerialize["folder_structure"] = o.FolderStructure
+	if !IsNil(o.FolderStructure) {
+		toSerialize["folder_structure"] = o.FolderStructure
+	}
 	toSerialize["citation"] = o.Citation
 	toSerialize["confidential_reason"] = o.ConfidentialReason
 	toSerialize["embargo_type"] = o.EmbargoType
@@ -1278,7 +1288,6 @@ func (o *ArticleComplete) UnmarshalJSON(data []byte) (err error) {
 	requiredProperties := []string{
 		"figshare_url",
 		"download_disabled",
-		"folder_structure",
 		"citation",
 		"confidential_reason",
 		"embargo_type",

@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **FigshareUrl** | **string** | Article public url | 
 **DownloadDisabled** | **bool** | If true, downloading of files for this article is disabled | 
-**FolderStructure** | **map[string]interface{}** | Mapping of file ids to folder paths, if folders are used | 
+**FolderStructure** | Pointer to **map[string]interface{}** | Mapping of file ids to folder paths, if folders are used | [optional] 
 **Citation** | **string** | Article citation | 
 **ConfidentialReason** | **string** | Confidentiality reason | 
 **EmbargoType** | **string** | Article embargo | 
@@ -52,7 +52,7 @@ Name | Type | Description | Notes
 
 ### NewArticleComplete
 
-`func NewArticleComplete(figshareUrl string, downloadDisabled bool, folderStructure map[string]interface{}, citation string, confidentialReason string, embargoType string, isConfidential bool, size int64, funding string, tags []string, keywords []string, version int64, isMetadataRecord bool, metadataReason string, status string, description string, isEmbargoed bool, embargoDate string, isPublic bool, modifiedDate NullableString, createdDate string, hasLinkedFile bool, categories []Category, license License, embargoTitle string, embargoReason string, references []string, id int64, title string, doi string, handle string, groupId NullableFloat32, url string, urlPublicHtml string, urlPublicApi string, urlPrivateHtml string, urlPrivateApi string, publishedDate NullableString, thumb string, definedType int64, definedTypeName string, resourceDoi string, resourceTitle string, ) *ArticleComplete`
+`func NewArticleComplete(figshareUrl string, downloadDisabled bool, citation string, confidentialReason string, embargoType string, isConfidential bool, size int64, funding string, tags []string, keywords []string, version int64, isMetadataRecord bool, metadataReason string, status string, description string, isEmbargoed bool, embargoDate string, isPublic bool, modifiedDate NullableString, createdDate string, hasLinkedFile bool, categories []Category, license License, embargoTitle string, embargoReason string, references []string, id int64, title string, doi string, handle string, groupId NullableFloat32, url string, urlPublicHtml string, urlPublicApi string, urlPrivateHtml string, urlPrivateApi string, publishedDate NullableString, thumb string, definedType int64, definedTypeName string, resourceDoi string, resourceTitle string, ) *ArticleComplete`
 
 NewArticleComplete instantiates a new ArticleComplete object
 This constructor will assign default values to properties that have it defined,
@@ -126,6 +126,11 @@ and a boolean to check if the value has been set.
 
 SetFolderStructure sets FolderStructure field to given value.
 
+### HasFolderStructure
+
+`func (o *ArticleComplete) HasFolderStructure() bool`
+
+HasFolderStructure returns a boolean if a field has been set.
 
 ### GetCitation
 

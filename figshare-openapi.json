@@ -757,7 +757,6 @@
           "resource_title",
           "resource_doi",
           "files",
-          "folder_structure",
           "authors",
           "custom_fields",
           "embargo_options",

@@ -614,7 +614,6 @@ components:
       required:
       - download_disabled
       - figshare_url
-      - folder_structure
       x-tag: articles
     Category:
       properties:
