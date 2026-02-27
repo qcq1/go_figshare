@@ -317,6 +317,56 @@
         }
       }
     },
+    "/4tu/total/article/{article_id}": {
+      "get": {
+        "servers": [
+          {
+            "url": "https://stats.figshare.com"
+          }
+        ],
+        "tags": [
+          "articles"
+        ],
+        "operationId": "crawl_total_article_4tu",
+        "summary": "View article total downloads, views",
+        "description": "View article total downloads, views",
+        "security": [],
+        "parameters": [
+          {
+            "name": "article_id",
+            "in": "path",
+            "description": "Article Unique identifier",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64",
+              "minimum": 1
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK. Article representation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TotalArticle"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
     "/viz/data/publication/for/aggregated-citations.json": {
       "get": {
         "servers": [

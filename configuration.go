@@ -101,6 +101,12 @@ func NewConfiguration() *Configuration {
 					Description: "No description provided",
 				},
 			},
+			"ArticlesAPIService.CrawlTotalArticle4tu": {
+				{
+					URL: "https://stats.figshare.com",
+					Description: "No description provided",
+				},
+			},
 			"ArticlesAPIService.GetAggregatedCitations": {
 				{
 					URL: "https://app.dimensions.ai",
