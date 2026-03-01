@@ -80,7 +80,6 @@ Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *ArticlesAPI* | [**ArticleDetails**](docs/ArticlesAPI.md#articledetails) | **Get** /articles/{article_id} | View article details
 *ArticlesAPI* | [**ArticlesList**](docs/ArticlesAPI.md#articleslist) | **Get** /articles | Public Articles
-*ArticlesAPI* | [**CrawlTotalArticle4tu**](docs/ArticlesAPI.md#crawltotalarticle4tu) | **Get** /4tu/total/article/{article_id} | View article total downloads, views
 *ArticlesAPI* | [**GetAggregatedCitations**](docs/ArticlesAPI.md#getaggregatedcitations) | **Get** /viz/data/publication/for/aggregated-citations.json | Get article aggregated citations
 *ArticlesAPI* | [**Total**](docs/ArticlesAPI.md#total) | **Get** /total/article/{article_id} | View article total downloads, views
 *ArticlesAPI* | [**TotalIns**](docs/ArticlesAPI.md#totalins) | **Get** /{institution}/total/article/{article_id} | View article total downloads, views

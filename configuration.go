@@ -95,12 +95,6 @@ func NewConfiguration() *Configuration {
 			},
 		},
 		OperationServers: map[string]ServerConfigurations{
-			"ArticlesAPIService.CrawlTotalArticle4tu": {
-				{
-					URL: "https://stats.figshare.com",
-					Description: "No description provided",
-				},
-			},
 			"ArticlesAPIService.GetAggregatedCitations": {
 				{
 					URL: "https://app.dimensions.ai",

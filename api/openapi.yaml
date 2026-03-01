@@ -313,40 +313,6 @@ paths:
       summary: "View article total downloads, views"
       tags:
       - articles
-  /4tu/total/article/{article_id}:
-    get:
-      description: "View article total downloads, views"
-      operationId: crawl_total_article_4tu
-      parameters:
-      - description: Article Unique identifier
-        explode: false
-        in: path
-        name: article_id
-        required: true
-        schema:
-          format: int64
-          minimum: 1
-          type: integer
-        style: simple
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/TotalArticle'
-          description: OK. Article representation
-        "400":
-          description: Bad Request
-        "404":
-          description: Not Found
-        "500":
-          description: Internal Server Error
-      security: []
-      servers:
-      - url: https://stats.figshare.com
-      summary: "View article total downloads, views"
-      tags:
-      - articles
   /viz/data/publication/for/aggregated-citations.json:
     get:
       description: Get article aggregated citations
