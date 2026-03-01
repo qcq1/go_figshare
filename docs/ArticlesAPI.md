@@ -6,9 +6,10 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**ArticleDetails**](ArticlesAPI.md#ArticleDetails) | **Get** /articles/{article_id} | View article details
 [**ArticlesList**](ArticlesAPI.md#ArticlesList) | **Get** /articles | Public Articles
-[**CrawlTotalArticle**](ArticlesAPI.md#CrawlTotalArticle) | **Get** /total/article/{article_id} | View article total downloads, views
 [**CrawlTotalArticle4tu**](ArticlesAPI.md#CrawlTotalArticle4tu) | **Get** /4tu/total/article/{article_id} | View article total downloads, views
 [**GetAggregatedCitations**](ArticlesAPI.md#GetAggregatedCitations) | **Get** /viz/data/publication/for/aggregated-citations.json | Get article aggregated citations
+[**Total**](ArticlesAPI.md#Total) | **Get** /total/article/{article_id} | View article total downloads, views
+[**TotalIns**](ArticlesAPI.md#TotalIns) | **Get** /{institution}/total/article/{article_id} | View article total downloads, views
 
 
 
@@ -176,76 +177,6 @@ No authorization required
 [[Back to README]](../README.md)
 
 
-## CrawlTotalArticle
-
-> TotalArticle CrawlTotalArticle(ctx, articleId).Execute()
-
-View article total downloads, views
-
-
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
-)
-
-func main() {
-	articleId := int64(789) // int64 | Article Unique identifier
-
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ArticlesAPI.CrawlTotalArticle(context.Background(), articleId).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ArticlesAPI.CrawlTotalArticle``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `CrawlTotalArticle`: TotalArticle
-	fmt.Fprintf(os.Stdout, "Response from `ArticlesAPI.CrawlTotalArticle`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**articleId** | **int64** | Article Unique identifier | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiCrawlTotalArticleRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
-### Return type
-
-[**TotalArticle**](TotalArticle.md)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
 ## CrawlTotalArticle4tu
 
 > TotalArticle CrawlTotalArticle4tu(ctx, articleId).Execute()
@@ -379,6 +310,149 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**AggregatedCitations**](AggregatedCitations.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## Total
+
+> TotalArticle Total(ctx, articleId).Execute()
+
+View article total downloads, views
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+)
+
+func main() {
+	articleId := int64(789) // int64 | Article Unique identifier
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.ArticlesAPI.Total(context.Background(), articleId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ArticlesAPI.Total``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `Total`: TotalArticle
+	fmt.Fprintf(os.Stdout, "Response from `ArticlesAPI.Total`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**articleId** | **int64** | Article Unique identifier | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiTotalRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**TotalArticle**](TotalArticle.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## TotalIns
+
+> TotalArticle TotalIns(ctx, institution, articleId).Execute()
+
+View article total downloads, views
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
+)
+
+func main() {
+	institution := "institution_example" // string | institution
+	articleId := int64(789) // int64 | Article Unique identifier
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.ArticlesAPI.TotalIns(context.Background(), institution, articleId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ArticlesAPI.TotalIns``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `TotalIns`: TotalArticle
+	fmt.Fprintf(os.Stdout, "Response from `ArticlesAPI.TotalIns`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**institution** | **string** | institution | 
+**articleId** | **int64** | Article Unique identifier | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiTotalInsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+### Return type
+
+[**TotalArticle**](TotalArticle.md)
 
 ### Authorization
 

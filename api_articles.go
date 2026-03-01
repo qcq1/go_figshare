@@ -386,112 +386,6 @@ func (a *ArticlesAPIService) ArticlesListExecute(r ApiArticlesListRequest) ([]Ar
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiCrawlTotalArticleRequest struct {
-	ctx context.Context
-	ApiService *ArticlesAPIService
-	articleId int64
-}
-
-func (r ApiCrawlTotalArticleRequest) Execute() (*TotalArticle, *http.Response, error) {
-	return r.ApiService.CrawlTotalArticleExecute(r)
-}
-
-/*
-CrawlTotalArticle View article total downloads, views
-
-View article total downloads, views
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param articleId Article Unique identifier
- @return ApiCrawlTotalArticleRequest
-*/
-func (a *ArticlesAPIService) CrawlTotalArticle(ctx context.Context, articleId int64) ApiCrawlTotalArticleRequest {
-	return ApiCrawlTotalArticleRequest{
-		ApiService: a,
-		ctx: ctx,
-		articleId: articleId,
-	}
-}
-
-// Execute executes the request
-//  @return TotalArticle
-func (a *ArticlesAPIService) CrawlTotalArticleExecute(r ApiCrawlTotalArticleRequest) (*TotalArticle, *http.Response, error) {
-	var (
-		localVarHTTPMethod   = http.MethodGet
-		localVarPostBody     interface{}
-		formFiles            []formFile
-		localVarReturnValue  *TotalArticle
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ArticlesAPIService.CrawlTotalArticle")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/total/article/{article_id}"
-	localVarPath = strings.Replace(localVarPath, "{"+"article_id"+"}", url.PathEscape(parameterValueToString(r.articleId, "articleId")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-	if r.articleId < 1 {
-		return localVarReturnValue, nil, reportError("articleId must be greater than 1")
-	}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
 type ApiCrawlTotalArticle4tuRequest struct {
 	ctx context.Context
 	ApiService *ArticlesAPIService
@@ -727,6 +621,222 @@ func (a *ArticlesAPIService) GetAggregatedCitationsExecute(r ApiGetAggregatedCit
 	}
 	if r.referer != nil {
 		parameterAddToHeaderOrQuery(localVarHeaderParams, "Referer", r.referer, "")
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiTotalRequest struct {
+	ctx context.Context
+	ApiService *ArticlesAPIService
+	articleId int64
+}
+
+func (r ApiTotalRequest) Execute() (*TotalArticle, *http.Response, error) {
+	return r.ApiService.TotalExecute(r)
+}
+
+/*
+Total View article total downloads, views
+
+View article total downloads, views
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param articleId Article Unique identifier
+ @return ApiTotalRequest
+*/
+func (a *ArticlesAPIService) Total(ctx context.Context, articleId int64) ApiTotalRequest {
+	return ApiTotalRequest{
+		ApiService: a,
+		ctx: ctx,
+		articleId: articleId,
+	}
+}
+
+// Execute executes the request
+//  @return TotalArticle
+func (a *ArticlesAPIService) TotalExecute(r ApiTotalRequest) (*TotalArticle, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *TotalArticle
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ArticlesAPIService.Total")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/total/article/{article_id}"
+	localVarPath = strings.Replace(localVarPath, "{"+"article_id"+"}", url.PathEscape(parameterValueToString(r.articleId, "articleId")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.articleId < 1 {
+		return localVarReturnValue, nil, reportError("articleId must be greater than 1")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiTotalInsRequest struct {
+	ctx context.Context
+	ApiService *ArticlesAPIService
+	institution string
+	articleId int64
+}
+
+func (r ApiTotalInsRequest) Execute() (*TotalArticle, *http.Response, error) {
+	return r.ApiService.TotalInsExecute(r)
+}
+
+/*
+TotalIns View article total downloads, views
+
+View article total downloads, views
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param institution institution
+ @param articleId Article Unique identifier
+ @return ApiTotalInsRequest
+*/
+func (a *ArticlesAPIService) TotalIns(ctx context.Context, institution string, articleId int64) ApiTotalInsRequest {
+	return ApiTotalInsRequest{
+		ApiService: a,
+		ctx: ctx,
+		institution: institution,
+		articleId: articleId,
+	}
+}
+
+// Execute executes the request
+//  @return TotalArticle
+func (a *ArticlesAPIService) TotalInsExecute(r ApiTotalInsRequest) (*TotalArticle, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodGet
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *TotalArticle
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ArticlesAPIService.TotalIns")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/{institution}/total/article/{article_id}"
+	localVarPath = strings.Replace(localVarPath, "{"+"institution"+"}", url.PathEscape(parameterValueToString(r.institution, "institution")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"article_id"+"}", url.PathEscape(parameterValueToString(r.articleId, "articleId")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.articleId < 1 {
+		return localVarReturnValue, nil, reportError("articleId must be greater than 1")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
