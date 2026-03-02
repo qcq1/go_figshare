@@ -393,6 +393,7 @@ type ApiGetAggregatedCitationsRequest struct {
 	cookie *string
 	xCsrfToken *string
 	vizStaggr *string
+	entityOrder *string
 	np *string
 	userAgent *string
 	referer *string
@@ -417,6 +418,11 @@ func (r ApiGetAggregatedCitationsRequest) XCsrfToken(xCsrfToken string) ApiGetAg
 
 func (r ApiGetAggregatedCitationsRequest) VizStaggr(vizStaggr string) ApiGetAggregatedCitationsRequest {
 	r.vizStaggr = &vizStaggr
+	return r
+}
+
+func (r ApiGetAggregatedCitationsRequest) EntityOrder(entityOrder string) ApiGetAggregatedCitationsRequest {
+	r.entityOrder = &entityOrder
 	return r
 }
 
@@ -487,6 +493,9 @@ func (a *ArticlesAPIService) GetAggregatedCitationsExecute(r ApiGetAggregatedCit
 	parameterAddToHeaderOrQuery(localVarQueryParams, "and_subset_figshare_doi", r.andSubsetFigshareDoi, "")
 	if r.vizStaggr != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "viz-st:aggr", r.vizStaggr, "")
+	}
+	if r.entityOrder != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "entity_order", r.entityOrder, "")
 	}
 	if r.np != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "np", r.np, "")

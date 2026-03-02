@@ -408,6 +408,13 @@
             }
           },
           {
+            "name": "entity_order",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
             "name": "np",
             "in": "query",
             "schema": {

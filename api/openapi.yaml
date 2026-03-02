@@ -335,6 +335,13 @@ paths:
         style: form
       - explode: true
         in: query
+        name: entity_order
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
         name: np
         required: false
         schema:
