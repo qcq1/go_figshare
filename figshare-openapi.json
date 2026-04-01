@@ -885,6 +885,64 @@
             "example": {
               "3000002": "Test Folder"
             }
+          },
+          "authors": {
+            "type": "array",
+            "description": "List of article authors",
+            "items": {
+              "$ref": "#/components/schemas/Author"
+            }
+          }
+        }
+      },
+      "Author": {
+        "x-tag": "authors",
+        "type": "object",
+        "required": [
+          "id",
+          "full_name",
+          "first_name",
+          "last_name",
+          "is_active",
+          "url_name",
+          "orcid_id"
+        ],
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64",
+            "description": "Author id",
+            "example": 97657
+          },
+          "full_name": {
+            "type": "string",
+            "description": "Author full name",
+            "example": "John Doe"
+          },
+          "first_name": {
+            "type": "string",
+            "description": "Author first name",
+            "example": "John"
+          },
+          "last_name": {
+            "type": "string",
+            "description": "Author last name",
+            "example": "Doe"
+          },
+          "is_active": {
+            "type": "boolean",
+            "description": "True if author has published items",
+            "example": 1
+          },
+          "url_name": {
+            "type": "string",
+            "description": "Author url name",
+            "example": "John_Doe"
+          },
+          "orcid_id": {
+            "type": "string",
+            "description": "Author Orcid",
+            "example": "1234-5678-9123-1234"
           }
         }
       },

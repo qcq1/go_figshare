@@ -13,6 +13,7 @@ docs/AggregatedCitationsResultsInnerName.md
 docs/Article.md
 docs/ArticleComplete.md
 docs/ArticlesAPI.md
+docs/Author.md
 docs/Category.md
 docs/License.md
 docs/ProjectArticle.md
@@ -25,6 +26,7 @@ model_aggregated_citations_results_inner_count.go
 model_aggregated_citations_results_inner_name.go
 model_article.go
 model_article_complete.go
+model_author.go
 model_category.go
 model_license.go
 model_project_article.go

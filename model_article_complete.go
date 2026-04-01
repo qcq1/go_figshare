@@ -26,6 +26,8 @@ type ArticleComplete struct {
 	DownloadDisabled bool `json:"download_disabled"`
 	// Mapping of file ids to folder paths, if folders are used
 	FolderStructure map[string]interface{} `json:"folder_structure,omitempty"`
+	// List of article authors
+	Authors []Author `json:"authors"`
 	// Article citation
 	Citation string `json:"citation"`
 	// Confidentiality reason
@@ -115,7 +117,7 @@ type _ArticleComplete ArticleComplete
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewArticleComplete(figshareUrl string, downloadDisabled bool, citation string, confidentialReason string, embargoType string, isConfidential bool, size int64, funding string, tags []string, keywords []string, version int64, isMetadataRecord bool, metadataReason string, status string, description string, isEmbargoed bool, embargoDate string, isPublic bool, modifiedDate NullableString, createdDate string, hasLinkedFile bool, categories []Category, license License, embargoTitle string, embargoReason string, references []string, id int64, title string, doi string, handle string, groupId NullableFloat32, url string, urlPublicHtml string, urlPublicApi string, urlPrivateHtml string, urlPrivateApi string, publishedDate NullableString, thumb string, definedType int64, definedTypeName string, resourceDoi string, resourceTitle string) *ArticleComplete {
+func NewArticleComplete(figshareUrl string, downloadDisabled bool, authors []Author, citation string, confidentialReason string, embargoType string, isConfidential bool, size int64, funding string, tags []string, keywords []string, version int64, isMetadataRecord bool, metadataReason string, status string, description string, isEmbargoed bool, embargoDate string, isPublic bool, modifiedDate NullableString, createdDate string, hasLinkedFile bool, categories []Category, license License, embargoTitle string, embargoReason string, references []string, id int64, title string, doi string, handle string, groupId NullableFloat32, url string, urlPublicHtml string, urlPublicApi string, urlPrivateHtml string, urlPrivateApi string, publishedDate NullableString, thumb string, definedType int64, definedTypeName string, resourceDoi string, resourceTitle string) *ArticleComplete {
 	this := ArticleComplete{}
 	this.Citation = citation
 	this.ConfidentialReason = confidentialReason
@@ -250,6 +252,30 @@ func (o *ArticleComplete) HasFolderStructure() bool {
 // SetFolderStructure gets a reference to the given map[string]interface{} and assigns it to the FolderStructure field.
 func (o *ArticleComplete) SetFolderStructure(v map[string]interface{}) {
 	o.FolderStructure = v
+}
+
+// GetAuthors returns the Authors field value
+func (o *ArticleComplete) GetAuthors() []Author {
+	if o == nil {
+		var ret []Author
+		return ret
+	}
+
+	return o.Authors
+}
+
+// GetAuthorsOk returns a tuple with the Authors field value
+// and a boolean to check if the value has been set.
+func (o *ArticleComplete) GetAuthorsOk() ([]Author, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.Authors, true
+}
+
+// SetAuthors sets field value
+func (o *ArticleComplete) SetAuthors(v []Author) {
+	o.Authors = v
 }
 
 // GetCitation returns the Citation field value
@@ -1233,6 +1259,7 @@ func (o ArticleComplete) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.FolderStructure) {
 		toSerialize["folder_structure"] = o.FolderStructure
 	}
+	toSerialize["authors"] = o.Authors
 	toSerialize["citation"] = o.Citation
 	toSerialize["confidential_reason"] = o.ConfidentialReason
 	toSerialize["embargo_type"] = o.EmbargoType
@@ -1288,6 +1315,7 @@ func (o *ArticleComplete) UnmarshalJSON(data []byte) (err error) {
 	requiredProperties := []string{
 		"figshare_url",
 		"download_disabled",
+		"authors",
 		"citation",
 		"confidential_reason",
 		"embargo_type",
@@ -1360,6 +1388,7 @@ func (o *ArticleComplete) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "figshare_url")
 		delete(additionalProperties, "download_disabled")
 		delete(additionalProperties, "folder_structure")
+		delete(additionalProperties, "authors")
 		delete(additionalProperties, "citation")
 		delete(additionalProperties, "confidential_reason")
 		delete(additionalProperties, "embargo_type")

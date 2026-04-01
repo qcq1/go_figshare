@@ -648,6 +648,21 @@ components:
         download_disabled: false
         folder_structure:
           "3000002": Test Folder
+        authors:
+        - orcid_id: 1234-5678-9123-1234
+          url_name: John_Doe
+          full_name: John Doe
+          is_active: 1
+          last_name: Doe
+          id: 97657
+          first_name: John
+        - orcid_id: 1234-5678-9123-1234
+          url_name: John_Doe
+          full_name: John Doe
+          is_active: 1
+          last_name: Doe
+          id: 97657
+          first_name: John
       properties:
         figshare_url:
           description: Article public url
@@ -660,10 +675,63 @@ components:
           description: "Mapping of file ids to folder paths, if folders are used"
           example:
             "3000002": Test Folder
+        authors:
+          description: List of article authors
+          items:
+            $ref: '#/components/schemas/Author'
       required:
+      - authors
       - download_disabled
       - figshare_url
       x-tag: articles
+    Author:
+      example:
+        orcid_id: 1234-5678-9123-1234
+        url_name: John_Doe
+        full_name: John Doe
+        is_active: 1
+        last_name: Doe
+        id: 97657
+        first_name: John
+      properties:
+        id:
+          description: Author id
+          example: 97657
+          format: int64
+          type: integer
+        full_name:
+          description: Author full name
+          example: John Doe
+          type: string
+        first_name:
+          description: Author first name
+          example: John
+          type: string
+        last_name:
+          description: Author last name
+          example: Doe
+          type: string
+        is_active:
+          description: True if author has published items
+          example: 1
+          type: boolean
+        url_name:
+          description: Author url name
+          example: John_Doe
+          type: string
+        orcid_id:
+          description: Author Orcid
+          example: 1234-5678-9123-1234
+          type: string
+      required:
+      - first_name
+      - full_name
+      - id
+      - is_active
+      - last_name
+      - orcid_id
+      - url_name
+      x-tag: authors
     Category:
       properties:
         parent_id:

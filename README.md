@@ -94,6 +94,7 @@ Class | Method | HTTP request | Description
  - [AggregatedCitationsResultsInnerName](docs/AggregatedCitationsResultsInnerName.md)
  - [Article](docs/Article.md)
  - [ArticleComplete](docs/ArticleComplete.md)
+ - [Author](docs/Author.md)
  - [Category](docs/Category.md)
  - [License](docs/License.md)
  - [ProjectArticle](docs/ProjectArticle.md)
